@@ -17,7 +17,7 @@ function classNames(...classes) {
 }
 
 export default function Example() {
-   const { setCurrentUser, userToken, setUserToken } = useStateContext();
+   const { currentUser, setCurrentUser, userToken, setUserToken } = useStateContext();
 
    const handleLogout = () => {
       setCurrentUser(null);
@@ -105,7 +105,7 @@ export default function Example() {
                                                 "block px-4 py-2 text-sm text-gray-700"
                                              )}
                                           >
-                                             My Profile
+                                             {(currentUser.name)}
                                           </a>
                                        )}
                                     </Menu.Item>
@@ -140,9 +140,7 @@ export default function Example() {
                               </Transition>
                            </Menu>
                         ) : (
-                           <Link
-                              to="/login"
-                           >
+                           <Link to="/login">
                               <Button text="Login" classname="text-primary bg-white" />
                            </Link>
                         )}

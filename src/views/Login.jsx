@@ -10,8 +10,6 @@ export default function Login() {
    const { setCurrentUser, setUserToken } = useStateContext();
    const [message, setMessage] = useState(null);
 
-   
-
    const onSubmit = (e) => {
       e.preventDefault();
       console.log("onSubmit");

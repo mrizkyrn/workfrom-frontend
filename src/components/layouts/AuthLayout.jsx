@@ -5,6 +5,7 @@ const AuthLayout = () => {
    const { currentUser, userToken } = useStateContext();
 
    if (userToken) {
+      console.log(currentUser);
       if (currentUser.role === "admin") {
          return <Navigate to="/admin" />;
       } else if (currentUser.role === "owner") {

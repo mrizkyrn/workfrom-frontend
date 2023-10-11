@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { createContext } from "react";
+import { json } from "react-router-dom";
 
 const StateContext = createContext({
    currentUser: {},
@@ -14,7 +15,8 @@ const StateContext = createContext({
 });
 
 export const ContextProvider = ({ children }) => {
-   const [currentUser, setCurrentUser] = useState({});
+   const savedUser = JSON.parse(localStorage.getItem("USER")) || {};
+   const [currentUser, setCurrentUser] = useState(savedUser);
    const [userToken, _setUserToken] = useState(localStorage.getItem("TOKEN") || "");
    const [toast, setToast] = useState({ message: "", show: false });
 
@@ -33,6 +35,14 @@ export const ContextProvider = ({ children }) => {
          setToast({ message: "", show: false });
       }, 5000);
    };
+
+   useEffect(() => {
+      if (currentUser) {
+         localStorage.setItem("USER", JSON.stringify(currentUser));
+      } else {
+         localStorage.removeItem("USER");
+      }
+   }, [currentUser]);
 
    return (
       <StateContext.Provider

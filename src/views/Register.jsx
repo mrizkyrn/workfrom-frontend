@@ -1,39 +1,66 @@
-import { Link } from "react-router-dom";
-// import { useStateContext } from "../contexts/ContextProvider.jsx";
-// import { useState } from "react";
-// import axiosClient from "../axios-client.js";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import showToastify from "../components/helpers/showToastify";
 
 export default function Register() {
-   // const { setCurrentUser, SetUserToken } = useStateContext();
-   // const [name, setName] = useState("");
-   // const [email, setEmail] = useState("");
-   // const [password, setPassword] = useState("");
-   // const [passwordConfirmation, setPasswordConfirmation] = useState("");
-   // const [error, setError] = useState("");
+   const navigate = useNavigate();
+   const [name, setName] = useState("");
+   const [email, setEmail] = useState("");
+   const [password, setPassword] = useState("");
+   const [role, setRole] = useState(1);
 
    const handleSubmit = (e) => {
       e.preventDefault();
       console.log("onSubmit Register");
-      // alert(`Email: ${email} Password: ${password} Name: ${name}`);
-      // setError({ __html: "" });
 
-      // axiosClient
-      //    .post("/api/v1/users", { name, email, password, password_confirmation: passwordConfirmation })
-      //    .then((response) => {
-      //       console.log(response);
-      //       setCurrentUser(response.data.data);
-      //       SetUserToken(response.data.data.token);
-      //    })
-      //    .catch((error) => {
-      //       console.log(error.response);
-      //       setError({ __html: error.response.data.errors.full_messages.join("<br>") });
-      //    });
-      // console.log(error);
+      const payload = {
+         name: name,
+         email: email,
+         password: password,
+         role: role,
+      };
+
+      console.log(payload);
+
+      fetch("http://localhost:8000/auth/register", {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+         },
+         body: JSON.stringify(payload),
+      })
+         .then((res) => res.json())
+         .then((data) => {
+            if (data.success) {
+               showToastify("success", "Register Berhasil, Silahkan Login");
+
+               setTimeout(() => {
+                  navigate("/login");
+               }, 5000);
+            } else {
+               toast.error("Register Gagal", {
+                  position: "top-right",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "colored",
+               });
+            }
+         })
+         .catch((err) => {
+            console.log(err);
+         });
    };
 
    return (
       <>
          <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 h-screen">
+            <ToastContainer />
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                <img
                   className="mx-auto h-10 w-auto"
@@ -53,6 +80,7 @@ export default function Register() {
                      </label>
                      <div className="mt-2">
                         <input
+                           onChange={(e) => setName(e.target.value)}
                            id="name"
                            name="name"
                            type="text"
@@ -69,6 +97,7 @@ export default function Register() {
                      </label>
                      <div className="mt-2">
                         <input
+                           onChange={(e) => setEmail(e.target.value)}
                            id="email"
                            name="email"
                            type="email"
@@ -87,6 +116,7 @@ export default function Register() {
                      </div>
                      <div className="mt-2">
                         <input
+                           onChange={(e) => setPassword(e.target.value)}
                            id="password"
                            name="password"
                            type="password"
@@ -98,20 +128,21 @@ export default function Register() {
                   </div>
 
                   <div className="flex items-center justify-between">
-                     <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+                     <label htmlFor="role" className="block text-sm font-medium leading-6 text-gray-900">
                         Register as
                      </label>
                   </div>
                   <div className="mt-2">
                      <select
-                        id="password"
-                        name="password"
-                        autoComplete="current-password"
+                        onChange={(e) => setRole(e.target.value)}
+                        id="role"
+                        name="role"
+                        autoComplete="current-role"
                         required
                         className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                      >
-                        <option value="1">User</option>
-                        <option value="2">Admin</option>
+                        <option value="customer">Customer</option>
+                        <option value="owner">Building Owner</option>
                      </select>
                   </div>
 
