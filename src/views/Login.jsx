@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-// import axiosClient from "../axios-client.js";
 import { createRef } from "react";
 import { useStateContext } from "../contexts/ContextProvider.jsx";
 import { useState } from "react";
@@ -49,10 +48,10 @@ export default function Login() {
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                <img
                   className="mx-auto h-10 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                  src="/Logo-WF.png"
                   alt="Your Company"
                />
-               <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+               <h2 className="mt-20 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                   Login to your account
                </h2>
             </div>

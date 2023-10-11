@@ -2,7 +2,7 @@ import Button from "../components/Button";
 import Container from "../components/Container";
 import SlideShow from "../components/SlideShow";
 import SpaceCard from "../components/SpaceCard";
-import UseCaseCard from "../components/CaseCard";
+import CaseCard from "../components/CaseCard";
 
 const Landing = () => {
    return (
@@ -18,8 +18,8 @@ const Landing = () => {
                   </p>
                   <Button text="Book Now" type={1} />
                </div>
-               <div className="basis-2/3">
-                  <img src="/vite.svg" alt="Landing Image" className="w-full h-auto" />
+               <div className="basis-4/5">
+                  <img src="/image-1.png" alt="Landing Image" className="w-full h-auto" />
                </div>
             </div>
          </Container>
@@ -75,19 +75,23 @@ const Landing = () => {
                   </p>
                </div>
                <div className="grid grid-cols-2 gap-10">
-                  <UseCaseCard
+                  <CaseCard
+                     imageSrc="/image-4.png"
                      title="Event"
                      description="Rayakan perayaan dan acara terbaik dengan tempat pilihan terbaik dan akses lebih mudah."
                   />
-                  <UseCaseCard
+                  <CaseCard
+                     imageSrc="/image-5.png"
                      title="Meeting"
                      description="Rayakan perayaan dan acara terbaik dengan tempat pilihan terbaik dan akses lebih mudah."
                   />
-                  <UseCaseCard
+                  <CaseCard
+                     imageSrc="/image-6.png"
                      title="Office"
                      description="Rayakan perayaan dan acara terbaik dengan tempat pilihan terbaik dan akses lebih mudah."
                   />
-                  <UseCaseCard
+                  <CaseCard
+                     imageSrc="/image-7.png"
                      title="Cafe"
                      description="Rayakan perayaan dan acara terbaik dengan tempat pilihan terbaik dan akses lebih mudah."
                   />

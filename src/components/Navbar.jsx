@@ -62,8 +62,8 @@ export default function Example() {
                                        classNames(
                                           isActive
                                              ? "text-primary font-black bg-white"
-                                             : "text-dark1 hover:text-primary hover:text-white",
-                                          "px-3 py-2 rounded-md text-sm font-medium text-lg"
+                                             : "text-dark1 hover:text-primary",
+                                          "px-3 py-2 rounded-md font-medium text-lg"
                                        )
                                     }
                                  >
@@ -143,7 +143,7 @@ export default function Example() {
                            </Menu>
                         ) : (
                            <Link to="/login">
-                              <Button text="Login" classname="text-primary bg-white" />
+                              <Button text="Login" type={2} />
                            </Link>
                         )}
                      </div>
