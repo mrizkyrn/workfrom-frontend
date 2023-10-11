@@ -41,7 +41,7 @@ export default function Register() {
                   alt="Your Company"
                />
                <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                  Sign up to your account
+                  Register to your account
                </h2>
             </div>
 
@@ -97,31 +97,9 @@ export default function Register() {
                      </div>
                   </div>
 
-                  <div>
-                     <div className="flex items-center justify-between">
-                        <label
-                           htmlFor="password_confirmation"
-                           className="block text-sm font-medium leading-6 text-gray-900"
-                        >
-                           Password Confirmation
-                        </label>
-                     </div>
-                     <div className="mt-2">
-                        <input
-                           id="password_confirmation"
-                           name="password_confirmation"
-                           type="password"
-                           autoComplete="current-password"
-                           required
-                           className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        />
-                     </div>
-                  </div>
-
-                  {/* SignUp as */}
                   <div className="flex items-center justify-between">
                      <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-                        Sign up as
+                        Register as
                      </label>
                   </div>
                   <div className="mt-2">
@@ -142,7 +120,7 @@ export default function Register() {
                         type="submit"
                         className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                      >
-                        Sign up
+                        Register
                      </button>
                   </div>
                </form>

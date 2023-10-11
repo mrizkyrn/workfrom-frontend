@@ -1,46 +1,46 @@
 import { Link, Navigate } from "react-router-dom";
 // import axiosClient from "../axios-client.js";
-// import { createRef } from "react";
+import { createRef } from "react";
 // import { useStateContext } from "../contexts/ContextProvider.jsx";
-// import { useState } from "react";
+import { useState } from "react";
 
 export default function Login() {
-   // const emailRef = createRef();
-   // const passwordRef = createRef();
+   const emailRef = createRef();
+   const passwordRef = createRef();
    // const { setUser, setToken } = useStateContext();
-   // const [message, setMessage] = useState(null);
+   const [message, setMessage] = useState(null);
 
    const onSubmit = (e) => {
       e.preventDefault();
       console.log("onSubmit");
 
-   //    const payload = {
-   //       email: emailRef.current.value,
-   //       password: passwordRef.current.value,
-   //    };
+      const payload = {
+         email: emailRef.current.value,
+         password: passwordRef.current.value,
+      };
 
-   //    console.log(payload);
+      console.log(payload);
 
-   //    fetch("http://localhost:8000/auth/login", {
-   //       method: "POST",
-   //       headers: {
-   //          "Content-Type": "application/json",
-   //       },
-   //       body: JSON.stringify(payload),
-   //    })
-   //       .then((res) => res.json())
-   //       .then((data) => {
-   //          console.log(data);
-   //          if (data.error) {
-   //             setMessage(data.error.message);
-   //          } else {
-   //             setUser(data.data.name);
-   //             setToken(data.api_token);
-   //          }
-   //       })
-   //       .catch((err) => {
-   //          console.log(err);
-   //       });
+      fetch("http://localhost:8000/auth/login", {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+         },
+         body: JSON.stringify(payload),
+      })
+         .then((res) => res.json())
+         .then((data) => {
+            console.log(data);
+            if (data.error) {
+               setMessage(data.error.message);
+            } else {
+               // setUser(data.data.name);
+               // setToken(data.api_token);
+            }
+         })
+         .catch((err) => {
+            console.log(err);
+         });
    };
    return (
       <>
@@ -52,7 +52,7 @@ export default function Login() {
                   alt="Your Company"
                />
                <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                  Sign in to your account
+                  Login to your account
                </h2>
             </div>
 
@@ -64,7 +64,7 @@ export default function Login() {
                      </label>
                      <div className="mt-2">
                         <input
-                           // ref={emailRef}
+                           ref={emailRef}
                            id="email"
                            name="email"
                            type="email"
@@ -88,7 +88,7 @@ export default function Login() {
                      </div>
                      <div className="mt-2">
                         <input
-                           // ref={passwordRef}
+                           ref={passwordRef}
                            id="password"
                            name="password"
                            type="password"
@@ -104,7 +104,7 @@ export default function Login() {
                         type="submit"
                         className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                      >
-                        Sign in
+                        Login
                      </button>
                   </div>
                </form>
