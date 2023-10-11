@@ -1,14 +1,16 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import axiosClient from "../axios-client.js";
 import { createRef } from "react";
-// import { useStateContext } from "../contexts/ContextProvider.jsx";
+import { useStateContext } from "../contexts/ContextProvider.jsx";
 import { useState } from "react";
 
 export default function Login() {
    const emailRef = createRef();
    const passwordRef = createRef();
-   // const { setUser, setToken } = useStateContext();
+   const { setCurrentUser, setUserToken } = useStateContext();
    const [message, setMessage] = useState(null);
+
+   
 
    const onSubmit = (e) => {
       e.preventDefault();
@@ -30,16 +32,17 @@ export default function Login() {
       })
          .then((res) => res.json())
          .then((data) => {
-            console.log(data);
-            if (data.error) {
-               setMessage(data.error.message);
+            if (data.success) {
+               setCurrentUser({ name: data.data.name, email: data.data.email, role: data.data.role });
+               console.log(data.data);
+               setUserToken(data.api_token);
             } else {
-               // setUser(data.data.name);
-               // setToken(data.api_token);
+               setMessage(data.message);
             }
          })
          .catch((err) => {
             console.log(err);
+            setMessage(err.message);
          });
    };
    return (
@@ -55,6 +58,12 @@ export default function Login() {
                   Login to your account
                </h2>
             </div>
+
+            {message && (
+               <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+                  <p className="text-red-800 text-center font-semibold">{message}</p>
+               </div>
+            )}
 
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                <form className="space-y-6" action="#" method="POST" onSubmit={onSubmit}>

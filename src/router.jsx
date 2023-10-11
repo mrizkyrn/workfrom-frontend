@@ -1,14 +1,32 @@
 import { createBrowserRouter } from "react-router-dom";
-import Login from "./views/Login.jsx";
+import CustomerLayout from "./components/layouts/CustomerLayout.jsx";
+import AdminLayout from "./components/layouts/AdminLayout.jsx";
 import Register from "./views/Register.jsx";
-import NotFound from "./views/NotFound.jsx";
 import Landing from "./views/Landing.jsx";
-import GuestLayout from "./components/layouts/GuestLayout.jsx";
+import AdminDashboard from "./views/AdminDashboard.jsx";
+import NotFound from "./views/NotFound.jsx";
+import Login from "./views/login.jsx";
+import AuthLayout from "./components/layouts/AuthLayout.jsx";
+import OwnerLayout from "./components/layouts/OwnerLayout.jsx";
 
 const router = createBrowserRouter([
    {
       path: "/",
-      element: <GuestLayout />,
+      element: <AuthLayout />,
+      children: [
+         {
+            path: "/login",
+            element: <Login />,
+         },
+         {
+            path: "/register",
+            element: <Register />,
+         },
+      ],
+   },
+   {
+      path: "/",
+      element: <CustomerLayout />,
       children: [
          {
             index: true,
@@ -17,12 +35,24 @@ const router = createBrowserRouter([
       ],
    },
    {
-      path: "/login",
-      element: <Login />,
+      path: "/admin",
+      element: <AdminLayout />,
+      children: [
+         {
+            index: true,
+            element: <AdminDashboard />,
+         },
+      ],
    },
    {
-      path: "/register",
-      element: <Register />,
+      path: "/owner",
+      element: <OwnerLayout />,
+      children: [
+         {
+            index: true,
+            element: <AdminDashboard />,
+         },
+      ],
    },
    {
       path: "*",
