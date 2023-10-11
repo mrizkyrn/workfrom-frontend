@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const SpaceCard = ({ title, location, address }) => {
    return (
-      <div className="h-[550px] min-w-[320px] flex flex-col justify-between items-center border-2 rounded-md pb-8">
+      <div className="h-[550px] max-w-[350px] flex flex-col justify-between items-center border-2 rounded-md pb-8">
          <div>
             <div className="w-full h-52 mb-5">
                <img
@@ -17,7 +17,7 @@ const SpaceCard = ({ title, location, address }) => {
                <p className="paragraph">{address}</p>
             </div>
          </div>
-         <Button text="Lihat" classname="text-primary bg-white !px-10" />
+         <Button text="Lihat" type={2} classname="!px-10" />
       </div>
    );
 };

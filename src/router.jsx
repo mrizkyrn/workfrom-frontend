@@ -8,6 +8,10 @@ import NotFound from "./views/NotFound.jsx";
 import Login from "./views/login.jsx";
 import AuthLayout from "./components/layouts/AuthLayout.jsx";
 import OwnerLayout from "./components/layouts/OwnerLayout.jsx";
+import Location from "./views/Location.jsx";
+import UseCase from "./views/UseCase.jsx";
+import Blog from "./views/Blog.jsx";
+import Contact from "./views/Contact.jsx";
 
 const router = createBrowserRouter([
    {
@@ -31,6 +35,22 @@ const router = createBrowserRouter([
          {
             index: true,
             element: <Landing />,
+         },
+         {
+            path: "/location",
+            element: <Location />,
+         },
+         {
+            path: "/use-case",
+            element: <UseCase />,
+         },
+         {
+            path: "/blog",
+            element: <Blog />,
+         },
+         {
+            path: "/contact-us",
+            element: <Contact />,
          },
       ],
    },

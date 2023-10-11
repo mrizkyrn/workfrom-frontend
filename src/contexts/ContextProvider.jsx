@@ -1,7 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { createContext } from "react";
-import { json } from "react-router-dom";
 
 const StateContext = createContext({
    currentUser: {},
@@ -14,6 +13,7 @@ const StateContext = createContext({
    setUserToken: () => {},
 });
 
+// eslint-disable-next-line react/prop-types
 export const ContextProvider = ({ children }) => {
    const savedUser = JSON.parse(localStorage.getItem("USER")) || {};
    const [currentUser, setCurrentUser] = useState(savedUser);

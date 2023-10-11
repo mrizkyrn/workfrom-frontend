@@ -2,14 +2,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import showToastify from "../components/helpers/showToastify";
+import showToastify from "../helpers/showToastify";
 
 export default function Register() {
    const navigate = useNavigate();
    const [name, setName] = useState("");
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
-   const [role, setRole] = useState(1);
+   const [role, setRole] = useState("");
 
    const handleSubmit = (e) => {
       e.preventDefault();

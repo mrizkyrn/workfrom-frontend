@@ -6,10 +6,10 @@ import { useStateContext } from "../contexts/ContextProvider";
 import Button from "./Button";
 
 const navigation = [
-   { name: "Landing", to: "/" },
-   { name: "Signin", to: "/signin" },
-   { name: "Projects", to: "/projects" },
-   { name: "Calendar", to: "/calendar" },
+   { name: "Location", to: "/location" },
+   { name: "Use Case", to: "/use-case" },
+   { name: "Blog", to: "/blog" },
+   { name: "Contact Us", to: "/contact-us" },
 ];
 
 function classNames(...classes) {
@@ -28,7 +28,7 @@ export default function Example() {
       <Disclosure as="nav" className="bg-white">
          {({ open }) => (
             <>
-               <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+               <div className="mx-auto max-w-7xl px-2 pt-5 sm:px-6 lg:px-8">
                   <div className="relative flex h-16 items-center justify-between">
                      <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                         {/* Mobile menu button*/}
@@ -44,11 +44,13 @@ export default function Example() {
                      </div>
                      <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                         <div className="flex flex-shrink-0 items-center">
-                           <img
-                              className="h-8 w-auto"
-                              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                              alt="Your Company"
-                           />
+                           <Link to="/">
+                              <img
+                                 className="h-8 w-auto mr-5"
+                                 src="/Logo-WF.png"
+                                 alt="Your Company"
+                              />
+                           </Link>
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
                            <div className="flex space-x-4">
@@ -59,9 +61,9 @@ export default function Example() {
                                     className={({ isActive }) =>
                                        classNames(
                                           isActive
-                                             ? "bg-gray-900 text-white"
-                                             : "text-primary hover:bg-gray-700 hover:text-white",
-                                          "px-3 py-2 rounded-md text-sm font-medium"
+                                             ? "text-primary font-black bg-white"
+                                             : "text-dark1 hover:text-primary hover:text-white",
+                                          "px-3 py-2 rounded-md text-sm font-medium text-lg"
                                        )
                                     }
                                  >
@@ -105,7 +107,7 @@ export default function Example() {
                                                 "block px-4 py-2 text-sm text-gray-700"
                                              )}
                                           >
-                                             {(currentUser.name)}
+                                             {currentUser.name}
                                           </a>
                                        )}
                                     </Menu.Item>
@@ -157,8 +159,8 @@ export default function Example() {
                            href={item.to}
                            className={classNames(
                               item.current
-                                 ? "bg-gray-900 text-white"
-                                 : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                                 ? "bg-gray-900 text-primary"
+                                 : "text-dark1 hover:bg-gray-700 hover:text-dark1",
                               "block rounded-md px-3 py-2 text-base font-medium"
                            )}
                            aria-current={item.current ? "page" : undefined}
