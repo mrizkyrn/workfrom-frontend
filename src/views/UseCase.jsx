@@ -36,8 +36,13 @@ const UseCase = () => {
                         className="border-y-2 border-l-2 border-gray-300 rounded-s-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                         placeholder="Regular input"
                      >
-                        <option>Without options</option>
-                        <option>Without options</option>
+                        <option value="" disabled selected>
+                           Use Case
+                        </option>
+                        <option>Event</option>
+                        <option>Meeting</option>
+                        <option>Photo Shoot</option>
+                        <option>Video Shoot</option>
                      </select>
                   </div>
 
@@ -58,6 +63,9 @@ const UseCase = () => {
                      className="border-2 border-gray-300 rounded-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                      placeholder="Regular input"
                   >
+                     <option value="" disabled selected>
+                        Capacity
+                     </option>
                      <option>Without options</option>
                      <option>Without options</option>
                   </select>
@@ -65,11 +73,14 @@ const UseCase = () => {
 
                <div className="relative inline-flex">
                   <ArrowBotIcon />
- 
+
                   <select
                      className="border-2 border-gray-300 rounded-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                      placeholder="Regular input"
                   >
+                     <option value="" disabled selected>
+                        Price
+                     </option>
                      <option>Without options</option>
                      <option>Without options</option>
                   </select>

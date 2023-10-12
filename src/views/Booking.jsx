@@ -74,7 +74,7 @@ const Booking = () => {
                            className="w-full border-2 border-gray-300 rounded-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                            placeholder="Pilih Metode"
                         >
-                           <option value="" disabled>
+                           <option value="" disabled selected>
                               Pilih Metode
                            </option>
                            <option value="metode 1">Metode 1</option>

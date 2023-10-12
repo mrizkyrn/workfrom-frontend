@@ -1,10 +1,11 @@
 import { Outlet } from "react-router-dom";
 import Footer from "../Footer";
+import Navbar from "../Navbar";
 
 const OwnerLayout = () => {
    return (
       <div>
-         <h1>owner layout</h1>
+         <Navbar />
          <Outlet />
          <Footer />
       </div>

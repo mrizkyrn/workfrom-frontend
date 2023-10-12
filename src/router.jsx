@@ -16,6 +16,10 @@ import DetailLocation from "./views/DetailLocation.jsx";
 import DetailUseCase from "./views/DetailUseCase.jsx";
 import AuthRequired from "./components/layouts/AuthRequired.jsx";
 import Booking from "./views/Booking.jsx";
+import UseCaseImages from "./views/usecase/UseCaseImages.jsx";
+import UseCaseLocation from "./views/usecase/UseCaseLocation.jsx";
+import UseCaseFacility from "./views/usecase/UseCaseFacility.jsx";
+import UseCaseReview from "./views/usecase/UseCaseReview.jsx";
 
 const router = createBrowserRouter([
    {
@@ -65,6 +69,24 @@ const router = createBrowserRouter([
          {
             path: "use-case/:id",
             element: <DetailUseCase />,
+            children: [
+               {
+                  index: true,
+                  element: <UseCaseImages />,
+               },
+               {
+                  path: "facility",
+                  element: <UseCaseFacility />,
+               },
+               {
+                  path: "review",
+                  element: <UseCaseReview />,
+               },
+               {
+                  path: "location",
+                  element: <UseCaseLocation />,
+               }
+            ],
          },
          {
             path: "/",

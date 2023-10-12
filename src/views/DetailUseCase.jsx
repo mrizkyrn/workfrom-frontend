@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import Button from "../components/Button";
 import Container from "../components/Container";
 import Tag from "../components/Tag";
@@ -45,6 +45,22 @@ const DetailUseCase = () => {
                      <Button text="Book Now" type={1} classname="text-center" />
                   </Link>
                </div>
+            </div>
+         </Container>
+
+         <Container>
+            <div className="flex justify-center items-center gap-16 font-semibold text-dark2 mt-24 mb-10">
+               <NavLink to="." end className={({isActive}) => isActive ? "text-primary font-bold" : "text-dark2"}>Gambar</NavLink>
+               <NavLink to="facility" className={({isActive}) => isActive ? "text-primary font-bold" : "text-dark2"}>Fasilitas</NavLink>
+               <NavLink to="review" className={({isActive}) => isActive ? "text-primary font-bold" : "text-dark2"}>Review</NavLink>
+               <NavLink to="location" className={({isActive}) => isActive ? "text-primary font-bold" : "text-dark2"}>Lokasi</NavLink>
+            </div>
+         </Container>
+
+         <Container>
+            <div className="min-h-[500px]">
+
+            <Outlet />
             </div>
          </Container>
       </>
