@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const CaseCard = ({ imageSrc, title, description }) => {
    return (
-      <div className="bg-cover bg-center h-[500px] w-[500px] flex flex-col justify-between items-start rounded-lg p-5 border-2 rounded-xl">
+      <div className="bg-cover bg-center h-[500px] w-[500px] flex flex-col justify-between items-start p-5 border-2 rounded-xl">
          <div className="w-full h-72">
             <img src={imageSrc} alt="Case" className="w-full h-full object-cover rounded-md" />
          </div>

@@ -1,8 +1,9 @@
 import Button from "../components/Button";
 import Container from "../components/Container";
 import SlideShow from "../components/SlideShow";
-import SpaceCard from "../components/SpaceCard";
-import CaseCard from "../components/CaseCard";
+import SpaceCard from "../components/cards/SpaceCard";
+import CaseCard from "../components/cards/CaseCard";
+import FaqCard from "../components/cards/FaqCard";
 
 const Landing = () => {
    return (
@@ -99,31 +100,54 @@ const Landing = () => {
             </div>
          </Container>
 
+         <div className="bg-[#F2F1FABD] py-14 mt-44 mb-44">
+            <Container>
+               <div className="flex flex-col justify-center items-center gap-8">
+                  <div className="flex flex-col justify-center items-center gap-3">
+                     <h1 className="heading-1 text-dark1">Pilih Space Terdekat</h1>
+                     <p className="paragraph w-2/3 text-center ">
+                        Rayakan perayaan dan acara terbaik dengan tempat pilihan terbaik dan akses lebih mudah.
+                     </p>
+                  </div>
+                  <div className="flex justify-between items-center gap-5">
+                     <SpaceCard
+                        title="Space 1"
+                        location="Jakarta Selata, DKI Jakarta"
+                        address="Kawasan, Jl. Mega Kuningan Barat Jl. DR. Ide Anak Agung Gde Agung No.1, RT.5/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, 12950"
+                     />
+                     <SpaceCard
+                        title="Space 1"
+                        location="Jakarta Selata, DKI Jakarta"
+                        address="Kawasan, Jl. Mega Kuningan Barat Jl. DR. Ide Anak Agung Gde Agung No.1, RT.5/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, 12950"
+                     />
+                     <SpaceCard
+                        title="Space 1"
+                        location="Jakarta Selata, DKI Jakarta"
+                        address="Kawasan, Jl. Mega Kuningan Barat Jl. DR. Ide Anak Agung Gde Agung No.1, RT.5/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, 12950"
+                     />
+                  </div>
+               </div>
+            </Container>
+         </div>
+
          <Container>
-            <div className="flex flex-col justify-center items-center gap-8 mt-44 mb-44">
-               <div className="flex flex-col justify-center items-center gap-3">
-                  <h1 className="heading-1 text-dark1">Pilih Space Terdekat</h1>
-                  <p className="paragraph w-2/3 text-center ">
-                     Rayakan perayaan dan acara terbaik dengan tempat pilihan terbaik dan akses lebih mudah.
-                  </p>
-               </div>
-               <div className="flex justify-between items-center gap-5">
-                  <SpaceCard
-                     title="Space 1"
-                     location="Jakarta Selata, DKI Jakarta"
-                     address="Kawasan, Jl. Mega Kuningan Barat Jl. DR. Ide Anak Agung Gde Agung No.1, RT.5/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, 12950"
-                  />
-                  <SpaceCard
-                     title="Space 1"
-                     location="Jakarta Selata, DKI Jakarta"
-                     address="Kawasan, Jl. Mega Kuningan Barat Jl. DR. Ide Anak Agung Gde Agung No.1, RT.5/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, 12950"
-                  />
-                  <SpaceCard
-                     title="Space 1"
-                     location="Jakarta Selata, DKI Jakarta"
-                     address="Kawasan, Jl. Mega Kuningan Barat Jl. DR. Ide Anak Agung Gde Agung No.1, RT.5/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, 12950"
-                  />
-               </div>
+            <div className="flex justify-center mb-14">
+               <h1 className="heading-1 text-dark1 w-1/2 !text-center">Frequently Asked Question</h1>
+            </div>
+
+            <div className="flex flex-col justify-center items-center gap-10 w-full">
+               <FaqCard
+                  question="Apa itu Workfrom?"
+                  answer="Workfrom merupakan sebuah platform yang menghubungkan penyewa dengan ruang kantor yang tepat di mana saja di berbagai lokasi. Kami dapat membantu menemukan kebutuhan penyewa dan pemilik gedung."
+               />
+               <FaqCard
+                  question="Fasilitas apa saja yang ditawarkan?"
+                  answer="Fasilitas mencakup akses internet berkecepatan tinggi, minuman gratis, area hiburan dan area lounge, serta kesempatan untuk memperluas networking."
+               />
+               <FaqCard
+                  question="Apakah buka di akhir pekan dan hari libur?"
+                  answer="Private Office tutup selama akhir pekan dan hari libur. Tetapi kedepannya bisa terdapat perubahan pada jam operasional kami."
+               />
             </div>
          </Container>
       </>

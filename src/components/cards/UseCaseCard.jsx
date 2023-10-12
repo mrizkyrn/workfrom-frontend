@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import Tag from "./Tag";
+import Tag from "../Tag";
 
 const UseCaseCard = () => {
    return (
@@ -20,7 +20,9 @@ const UseCaseCard = () => {
                <p className="font-semibold">30 Person</p>
             </div>
             <p>buliding name</p>
-            <h2><span className="font-semibold text-2xl text-primary">1.400.000</span>/year</h2>
+            <h2>
+               <span className="font-semibold text-2xl text-primary">1.400.000</span>/year
+            </h2>
             <p>Komplek Multatuli Indah, Jl. Multatuli No.30-31, Hamdan, Kec. Medan Maimun, 20212</p>
          </div>
       </div>

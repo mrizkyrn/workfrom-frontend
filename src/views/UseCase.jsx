@@ -1,5 +1,5 @@
 import Container from "../components/Container";
-import UseCaseCard from "../components/UseCaseCard";
+import UseCaseCard from "../components/cards/UseCaseCard";
 
 const UseCase = () => {
    return (
@@ -8,7 +8,7 @@ const UseCase = () => {
             <div className="flex justify-between items-center mt-10">
                <h1 className="heading-1">Use Case</h1>
                <p>
-                  Home &gt; <span>Use Case</span>
+                  Home &gt; <span className="text-primary">Use Case</span>
                </p>
             </div>
          </Container>

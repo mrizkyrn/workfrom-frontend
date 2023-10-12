@@ -1,14 +1,23 @@
+import { useState } from "react";
 import Container from "../components/Container";
-import SpaceCard from "../components/SpaceCard";
+import SpaceCard from "../components/cards/SpaceCard";
 
 const Location = () => {
+   const [location, setLocation] = useState("Jakarta");
+   const [keyword, setKeyword] = useState("");
+
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log(location, keyword);
+   };
+
    return (
       <>
          <Container>
             <div className="flex justify-between items-center mt-10">
                <h1 className="heading-1">Location</h1>
                <p>
-                  Home &gt; <span>Location</span>
+                  Home &gt; <span className="text-primary">Location</span>
                </p>
             </div>
          </Container>
@@ -24,6 +33,7 @@ const Location = () => {
                      <path d="M412 0L206 232 0 0h412z" fill="currentColor" fillRule="evenodd" />
                   </svg>
                   <select
+                     onChange={(e) => setLocation(e.target.value)}
                      className="w-40 border-y-2 border-l-2 border-gray-300 rounded-s-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                      placeholder="Regular input"
                   >
@@ -34,11 +44,15 @@ const Location = () => {
                </div>
 
                <input
+                  onChange={(e) => setKeyword(e.target.value)}
                   type="text"
                   className="border-y-2 border-r-0 border-l border-gray-300 text-gray-600 h-16 w-1/2 pl-5 pr-10 bg-white focus:outline-none appearance-none"
                   placeholder="Regular input"
                />
-               <button className="border-y-2 border-r-2 border-l-0 border-gray-300 rounded-e-full h-16 px-5">
+               <button
+                  onClick={handleSubmit}
+                  className="border-y-2 border-r-2 border-l-0 border-gray-300 rounded-e-full h-16 px-5"
+               >
                   <svg
                      xmlns="http://www.w3.org/2000/svg"
                      fill="none"

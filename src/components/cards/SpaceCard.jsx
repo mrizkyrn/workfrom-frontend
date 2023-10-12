@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
-import Button from "./Button";
+import Button from "../Button";
 
 const SpaceCard = ({ title, location, address }) => {
    return (
-      <div className="h-[550px] max-w-[350px] flex flex-col justify-between items-center border-2 rounded-md pb-8">
+      <div className="h-[550px] max-w-[350px] flex flex-col justify-between items-center border-2 rounded-md pb-8 bg-white">
          <div>
             <div className="w-full h-52 mb-5">
                <img
