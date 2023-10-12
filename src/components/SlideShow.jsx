@@ -13,13 +13,13 @@ export default function SlideShow() {
       <>
          <Swiper navigation={true} modules={[Navigation]} className="mySwiper h-full w-full">
             <SwiperSlide>
-               <img src="/image-2.png" className="w-full" />
+               <img src="/image-2.png" alt="building image" className="w-full" />
             </SwiperSlide>
             <SwiperSlide>
-               <img src="/image-3.png" className="w-full" />
+               <img src="/image-3.png" alt="building image" className="w-full" />
             </SwiperSlide>
             <SwiperSlide>
-               <img src="/image-2.png" className="w-full" />
+               <img src="/image-2.png" alt="building image" className="w-full" />
             </SwiperSlide>
          </Swiper>
       </>

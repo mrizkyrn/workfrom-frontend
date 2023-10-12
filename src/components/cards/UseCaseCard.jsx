@@ -3,17 +3,18 @@ import Tag from "../Tag";
 import { useNavigate } from "react-router-dom";
 import { BuildingIcon } from "../../icons/icons";
 
-const UseCaseCard = ({category, name, accommodate, price, location}) => {
+const UseCaseCard = ({id, category, name, accommodate, price, location}) => {
    const navigate = useNavigate();
 
    const handleClick = () => {
-      navigate("/use-case/1");
+      navigate(`/use-case/${id}`);
+      window.scrollTo(0, 0);
    };
 
    return (
       <div
          onClick={handleClick}
-         className="h-[550px] max-w-[350px] flex flex-col justify-between items-center border-2 rounded-md p-7 cursor-pointer"
+         className="h-[550px] max-w-[350px] flex flex-col justify-between items-center border-2 rounded-md p-7 cursor-pointer hover:shadow-lg hover:scale-95 transition duration-300 ease-in-out"
       >
          <div className="w-full h-52">
             <img
@@ -36,13 +37,14 @@ const UseCaseCard = ({category, name, accommodate, price, location}) => {
             <h2>
                <span className="font-semibold text-2xl text-primary">{price}</span>/year
             </h2>
-            <p>{location}</p>
          </div>
+            <p className="text-left w-full">{location}</p>
       </div>
    );
 };
 
 UseCaseCard.propTypes = {
+   id: PropTypes.number.isRequired,
    category: PropTypes.string.isRequired,
    name: PropTypes.string.isRequired,
    accommodate: PropTypes.number.isRequired,

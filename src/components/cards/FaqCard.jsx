@@ -8,7 +8,7 @@ const FaqCard = ({ question, answer }) => {
 
    return (
       <div className="flex justify-start items-start gap-5 shadow-xl w-3/4 border-2 rounded-md p-12">
-         <button className=" text-primary" onClick={() => setIsOpen((prev) => !prev)}>
+         <button className=" text-primary" onClick={() => setIsOpen((prev) => !prev)} aria-label="open-close">
             {isOpen ? <CloseIcon /> : <PlusIcon />}
          </button>
          <div className="flex flex-col">

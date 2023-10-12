@@ -41,9 +41,8 @@ const DetailUseCase = () => {
                      <span className="font-bold text-2xl text-primary">IDR 1.400.000</span>/year
                   </h2>
 
-                  <Link to={"booking"}>
-                  
-                  <Button text="Book Now" type={1} classname="w-full text-center"/>
+                  <Link to={"booking"} className="w-full">
+                     <Button text="Book Now" type={1} classname="text-center" />
                   </Link>
                </div>
             </div>

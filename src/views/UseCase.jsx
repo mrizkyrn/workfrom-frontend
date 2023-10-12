@@ -82,6 +82,7 @@ const UseCase = () => {
                {buildings.map((building) => (
                   <UseCaseCard
                      key={building.user_id}
+                     id={building.user_id}
                      category={building.category}
                      name={building.name}
                      accommodate={building.accommodate}
