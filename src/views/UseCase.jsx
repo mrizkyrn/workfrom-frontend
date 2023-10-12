@@ -1,7 +1,20 @@
+import { useLoaderData } from "react-router-dom";
 import Container from "../components/Container";
 import UseCaseCard from "../components/cards/UseCaseCard";
 
+// eslint-disable-next-line react-refresh/only-export-components
+export async function loader() {
+   const res = await fetch("http://localhost:8000/all");
+   if (!res.ok) {
+      throw new Error("Something went wrong");
+   }
+   const buildings = await res.json();
+   return buildings;
+}
+
 const UseCase = () => {
+   const buildings = useLoaderData();
+
    return (
       <>
          <Container>
@@ -94,12 +107,16 @@ const UseCase = () => {
 
          <Container>
             <div className="flex justify-center items-center gap-10 flex-wrap w-full mt-16 mb-44">
-               <UseCaseCard />
-               <UseCaseCard />
-               <UseCaseCard />
-               <UseCaseCard />
-               <UseCaseCard />
-               <UseCaseCard />
+               {buildings.map((building) => (
+                  <UseCaseCard
+                     key={building.user_id}
+                     category={building.category}
+                     name={building.name}
+                     accommodate={building.accommodate}
+                     price={building.price}
+                     location={building.location}
+                  />
+               ))}
             </div>
          </Container>
       </>

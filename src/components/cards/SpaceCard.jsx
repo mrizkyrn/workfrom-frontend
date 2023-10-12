@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import Button from "../Button";
+import { Link } from "react-router-dom";
 
-const SpaceCard = ({ title, location, address }) => {
+const SpaceCard = ({ id, title, location, address }) => {
    return (
       <div className="h-[550px] max-w-[350px] flex flex-col justify-between items-center border-2 rounded-md pb-8 bg-white">
          <div>
@@ -17,12 +18,15 @@ const SpaceCard = ({ title, location, address }) => {
                <p className="paragraph">{address}</p>
             </div>
          </div>
-         <Button text="Lihat" type={2} classname="!px-10" />
+         <Link to={`/location/${id}`}>
+            <Button text="Lihat" type={2} classname="!px-10" />
+         </Link>
       </div>
    );
 };
 
 SpaceCard.propTypes = {
+   id: PropTypes.number,
    title: PropTypes.string.isRequired,
    image: PropTypes.string,
    location: PropTypes.string,

@@ -1,9 +1,21 @@
 import { useState } from "react";
 import Container from "../components/Container";
 import SpaceCard from "../components/cards/SpaceCard";
+import { useLoaderData } from "react-router-dom";
+
+// eslint-disable-next-line react-refresh/only-export-components
+export async function loader() {
+   const res = await fetch("http://localhost:8000/all");
+   if (!res.ok) {
+      throw new Error("Something went wrong");
+   }
+   const buildings = await res.json();
+   return buildings;
+}
 
 const Location = () => {
-   const [location, setLocation] = useState("Jakarta");
+   const buildings = useLoaderData();
+   const [location, setLocation] = useState("");
    const [keyword, setKeyword] = useState("");
 
    const handleSubmit = (e) => {
@@ -37,6 +49,7 @@ const Location = () => {
                      className="w-40 border-y-2 border-l-2 border-gray-300 rounded-s-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                      placeholder="Regular input"
                   >
+                     <option value="">Location</option>
                      <option value="Jakarta">Jakarta</option>
                      <option value="Bandung">Bandung</option>
                      <option value="Surabaya">Medan</option>
@@ -73,36 +86,15 @@ const Location = () => {
 
          <Container>
             <div className="flex justify-center items-center gap-10 flex-wrap w-full mt-16 mb-44">
-               <SpaceCard
-                  title="Space 1"
-                  location="Jakarta Selata, DKI Jakarta"
-                  address="Kawasan, Jl. Mega Kuningan Barat Jl. DR. Ide Anak Agung Gde Agung No.1, RT.5/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, 12950"
-               />
-               <SpaceCard
-                  title="Space 1"
-                  location="Jakarta Selata, DKI Jakarta"
-                  address="Kawasan, Jl. Mega Kuningan Barat Jl. DR. Ide Anak Agung Gde Agung No.1, RT.5/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, 12950"
-               />
-               <SpaceCard
-                  title="Space 1"
-                  location="Jakarta Selata, DKI Jakarta"
-                  address="Kawasan, Jl. Mega Kuningan Barat Jl. DR. Ide Anak Agung Gde Agung No.1, RT.5/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, 12950"
-               />
-               <SpaceCard
-                  title="Space 1"
-                  location="Jakarta Selata, DKI Jakarta"
-                  address="Kawasan, Jl. Mega Kuningan Barat Jl. DR. Ide Anak Agung Gde Agung No.1, RT.5/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, 12950"
-               />
-               <SpaceCard
-                  title="Space 1"
-                  location="Jakarta Selata, DKI Jakarta"
-                  address="Kawasan, Jl. Mega Kuningan Barat Jl. DR. Ide Anak Agung Gde Agung No.1, RT.5/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, 12950"
-               />
-               <SpaceCard
-                  title="Space 1"
-                  location="Jakarta Selata, DKI Jakarta"
-                  address="Kawasan, Jl. Mega Kuningan Barat Jl. DR. Ide Anak Agung Gde Agung No.1, RT.5/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, 12950"
-               />
+               {buildings.map((building) => (
+                  <SpaceCard
+                     key={building.user_id}
+                     id={building.user_id}
+                     title={building.name}
+                     location={building.location}
+                     address={building.category}
+                  />
+               ))}
             </div>
          </Container>
       </>

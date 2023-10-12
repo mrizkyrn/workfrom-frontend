@@ -1,39 +1,53 @@
 import PropTypes from "prop-types";
 import Tag from "../Tag";
+import { useNavigate } from "react-router-dom";
+import { BuildingIcon } from "../../icons/icons";
 
-const UseCaseCard = () => {
+const UseCaseCard = ({category, name, accommodate, price, location}) => {
+   const navigate = useNavigate();
+
+   const handleClick = () => {
+      navigate("/use-case/1");
+   };
+
    return (
-      <div className="h-[550px] max-w-[350px] flex flex-col justify-between items-center border-2 rounded-md p-7">
+      <div
+         onClick={handleClick}
+         className="h-[550px] max-w-[350px] flex flex-col justify-between items-center border-2 rounded-md p-7 cursor-pointer"
+      >
          <div className="w-full h-52">
             <img
-               src="https://plus.unsplash.com/premium_photo-1695635983985-1b7e573d6b83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+               src="/image-10.png"
                className="w-full h-full object-cover rounded-md"
             />
          </div>
-         <div className="flex flex-col gap-3">
+         <div className="flex flex-col gap-3 w-full">
             <div className="flex gap-3 justify-start items-center w-full">
-               <Tag text="Kantor" />
-               <Tag text="Meeting" />
+               <Tag text={category} />
             </div>
             <div className="flex justify-between items-center w-full">
-               <h1 className="special-heading">Type</h1>
-               <p className="font-semibold">30 Person</p>
+               <h1 className="special-heading">{name}</h1>
+               <p className="font-semibold">{accommodate} Person</p>
             </div>
-            <p>buliding name</p>
+            <div className="flex gap-3">
+               <BuildingIcon />
+               <p>{name}</p>
+            </div>
             <h2>
-               <span className="font-semibold text-2xl text-primary">1.400.000</span>/year
+               <span className="font-semibold text-2xl text-primary">{price}</span>/year
             </h2>
-            <p>Komplek Multatuli Indah, Jl. Multatuli No.30-31, Hamdan, Kec. Medan Maimun, 20212</p>
+            <p>{location}</p>
          </div>
       </div>
    );
 };
 
 UseCaseCard.propTypes = {
-   title: PropTypes.string.isRequired,
-   image: PropTypes.string,
-   location: PropTypes.string,
-   address: PropTypes.string,
+   category: PropTypes.string.isRequired,
+   name: PropTypes.string.isRequired,
+   accommodate: PropTypes.number.isRequired,
+   price: PropTypes.number.isRequired,
+   location: PropTypes.string.isRequired,
 };
 
 export default UseCaseCard;

@@ -8,10 +8,14 @@ import NotFound from "./views/NotFound.jsx";
 import Login from "./views/login.jsx";
 import AuthLayout from "./components/layouts/AuthLayout.jsx";
 import OwnerLayout from "./components/layouts/OwnerLayout.jsx";
-import Location from "./views/Location.jsx";
-import UseCase from "./views/UseCase.jsx";
+import Location, {loader as locationLoader} from "./views/Location.jsx";
+import UseCase, {loader as useCaseLoader} from "./views/UseCase.jsx";
 import Blog from "./views/Blog.jsx";
 import Contact from "./views/Contact.jsx";
+import DetailLocation from "./views/DetailLocation.jsx";
+import DetailUseCase from "./views/DetailUseCase.jsx";
+import AuthRequired from "./components/layouts/AuthRequired.jsx";
+import Booking from "./views/Booking.jsx";
 
 const router = createBrowserRouter([
    {
@@ -19,11 +23,11 @@ const router = createBrowserRouter([
       element: <AuthLayout />,
       children: [
          {
-            path: "/login",
+            path: "login",
             element: <Login />,
          },
          {
-            path: "/register",
+            path: "register",
             element: <Register />,
          },
       ],
@@ -37,20 +41,44 @@ const router = createBrowserRouter([
             element: <Landing />,
          },
          {
-            path: "/location",
+            path: "location",
             element: <Location />,
+            loader: locationLoader,
          },
          {
-            path: "/use-case",
+            path: "use-case",
             element: <UseCase />,
+            loader: useCaseLoader,
          },
          {
-            path: "/blog",
+            path: "blog",
             element: <Blog />,
          },
          {
-            path: "/contact-us",
+            path: "contact-us",
             element: <Contact />,
+         },
+         {
+            path: "location/:id",
+            element: <DetailLocation />,
+         },
+         {
+            path: "use-case/:id",
+            element: <DetailUseCase />,
+         },
+         {
+            path: "/",
+            element: <AuthRequired />,
+            children: [
+               {
+                  path: "use-case/:1/booking",
+                  element: <Booking />,
+               },
+               {
+                  path: "location/:1/booking",
+                  element: <Booking />,
+               },
+            ],
          },
       ],
    },
