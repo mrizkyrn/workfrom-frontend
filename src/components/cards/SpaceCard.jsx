@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import Button from "../Button";
 import { Link } from "react-router-dom";
 
-const SpaceCard = ({ id, title, location, address }) => {
+const SpaceCard = ({ id, name, city, province, location }) => {
    return (
       <div className="h-[550px] max-w-[350px] flex flex-col justify-between items-center border-2 rounded-md pb-8 bg-white hover:shadow-lg transition duration-300 ease-in-out">
          <div>
@@ -14,9 +14,9 @@ const SpaceCard = ({ id, title, location, address }) => {
                />
             </div>
             <div className="flex flex-col justify-center items-center gap-3 px-5 text-center">
-               <h1 className="special-heading">{title}</h1>
-               <h2>{location}</h2>
-               <p className="paragraph">{address}</p>
+               <h1 className="special-heading">{name}</h1>
+               <p className="paragraph !text-primary">{city}, {province}</p>
+               <p className="paragraph">{location}</p>
             </div>
          </div>
          <Link to={`/location/${id}`}>
@@ -28,10 +28,10 @@ const SpaceCard = ({ id, title, location, address }) => {
 
 SpaceCard.propTypes = {
    id: PropTypes.number,
-   title: PropTypes.string.isRequired,
-   image: PropTypes.string,
+   name: PropTypes.string.isRequired,
+   city: PropTypes.string,
+   province: PropTypes.string,
    location: PropTypes.string,
-   address: PropTypes.string,
 };
 
 export default SpaceCard;

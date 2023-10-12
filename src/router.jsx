@@ -8,8 +8,8 @@ import NotFound from "./views/NotFound.jsx";
 import Login from "./views/login.jsx";
 import AuthLayout from "./components/layouts/AuthLayout.jsx";
 import OwnerLayout from "./components/layouts/OwnerLayout.jsx";
-import Location, {loader as locationLoader} from "./views/Location.jsx";
-import UseCase, {loader as useCaseLoader} from "./views/UseCase.jsx";
+import Location, { loader as locationLoader } from "./views/Location.jsx";
+import UseCase, { loader as useCaseLoader } from "./views/UseCase.jsx";
 import Blog from "./views/Blog.jsx";
 import Contact from "./views/Contact.jsx";
 import DetailLocation from "./views/DetailLocation.jsx";
@@ -20,6 +20,8 @@ import UseCaseImages from "./views/usecase/UseCaseImages.jsx";
 import UseCaseLocation from "./views/usecase/UseCaseLocation.jsx";
 import UseCaseFacility from "./views/usecase/UseCaseFacility.jsx";
 import UseCaseReview from "./views/usecase/UseCaseReview.jsx";
+import OwnerDashboard from "./views/OwnerDashboard.jsx";
+import AddProperty from "./views/AddProperty.jsx";
 
 const router = createBrowserRouter([
    {
@@ -85,7 +87,7 @@ const router = createBrowserRouter([
                {
                   path: "location",
                   element: <UseCaseLocation />,
-               }
+               },
             ],
          },
          {
@@ -120,7 +122,11 @@ const router = createBrowserRouter([
       children: [
          {
             index: true,
-            element: <AdminDashboard />,
+            element: <OwnerDashboard />,
+         },
+         {
+            path: "add-property",
+            element: <AddProperty />,
          },
       ],
    },

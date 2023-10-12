@@ -29,7 +29,8 @@ export function ArrowBotIcon() {
    );
 }
 
-export function SearchIcon() {
+// eslint-disable-next-line react/prop-types
+export function SearchIcon({className=""}) {
    return (
       <svg
          xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +38,7 @@ export function SearchIcon() {
          viewBox="0 0 24 24"
          strokeWidth="1.5"
          stroke="currentColor"
-         className="w-6 h-6"
+         className={`w-6 h-6 ${className}`}
       >
          <path
             strokeLinecap="round"

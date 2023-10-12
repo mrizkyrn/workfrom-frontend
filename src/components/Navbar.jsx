@@ -13,8 +13,8 @@ const navigation = [
 ];
 
 const ownerNavigation = [
-   { name: "My Property", to: "/dashboard" },
-   { name: "Contact Us", to: "/location" },
+   { name: "My Property", to: "/owner" },
+   { name: "Contact Us", to: "/contact-us" },
 ];
 
 function classNames(...classes) {
@@ -49,9 +49,15 @@ export default function Example() {
                      </div>
                      <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                         <div className="flex flex-shrink-0 items-center">
-                           <Link to="/">
-                              <img className="h-8 w-auto mr-5" src="/Logo-WF.png" alt="Your Company" />
-                           </Link>
+                           {currentUser && currentUser.role === "owner" ? (
+                              <Link to="/owner">
+                                 <img className="h-8 w-auto mr-5" src="/Logo-WF.png" alt="Your Company" />
+                              </Link>
+                           ) : (
+                              <Link to="/">
+                                 <img className="h-8 w-auto mr-5" src="/Logo-WF.png" alt="Your Company" />
+                              </Link>
+                           )}
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
                            <div className="flex space-x-4">
@@ -65,7 +71,7 @@ export default function Example() {
                                                isActive
                                                   ? "text-primary font-black bg-white"
                                                   : "text-dark1 hover:text-primary",
-                                               "px-3 py-2 rounded-md font-medium text-lg"
+                                               "px-3 py-2 rounded-md font-medium text-base"
                                             )
                                          }
                                       >

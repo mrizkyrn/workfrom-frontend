@@ -74,9 +74,10 @@ const Location = () => {
                   <SpaceCard
                      key={building.user_id}
                      id={building.user_id}
-                     title={building.name}
+                     name={building.name}
+                     city={building.city}
+                     province={building.provinc}
                      location={building.location}
-                     address={building.category}
                   />
                ))}
             </div>
