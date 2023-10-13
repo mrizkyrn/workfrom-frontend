@@ -20,13 +20,16 @@ const OwnerDashboard = () => {
       })
          .then((res) => res.json())
          .then((data) => {
-            setBuildings(data);
+            if (data.message) {
+               console.log(data.message);
+            } else {
+               setBuildings(data);
+            }
          })
          .catch((err) => {
             console.log(err);
          });
-   }, [userToken, buildings]);
-
+   }, []);
 
    return (
       <>

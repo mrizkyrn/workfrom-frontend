@@ -2,28 +2,23 @@ import { useEffect, useState } from "react";
 import Container from "../components/Container";
 import { ArrowBotIcon } from "../icons/icons";
 import { useStateContext } from "../contexts/ContextProvider";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const EditProperty = () => {
    const { userToken } = useStateContext();
    const { id } = useParams();
-   const navigate = useNavigate();
    const [data, setData] = useState({});
 
    useEffect(() => {
-      if (!userToken) {
-         navigate("/login");
-      } else {
-         fetch(`http://localhost:8000/buildings/showbuild/${id}?api_token=${userToken}`)
-            .then((res) => res.json())
-            .then((data) => {
-               console.log(data);
-               setData(data);
-            })
-            .catch((err) => {
-               console.log(err);
-            });
-      }
+      fetch(`http://localhost:8000/buildings/showbuild/${id}?api_token=${userToken}`)
+         .then((res) => res.json())
+         .then((data) => {
+            console.log(data);
+            setData(data);
+         })
+         .catch((err) => {
+            console.log(err);
+         });
    }, []);
 
    const [name, setName] = useState("");

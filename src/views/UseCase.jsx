@@ -63,8 +63,9 @@ const UseCase = () => {
                   <select
                      className="border-2 border-gray-300 rounded-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                      placeholder="Regular input"
+                     defaultValue=""
                   >
-                     <option value="" disabled selected>
+                     <option value="" disabled>
                         Capacity
                      </option>
                      <option>Without options</option>
@@ -78,8 +79,9 @@ const UseCase = () => {
                   <select
                      className="border-2 border-gray-300 rounded-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                      placeholder="Regular input"
+                     defaultValue=""
                   >
-                     <option value="" disabled selected>
+                     <option value="" disabled>
                         Price
                      </option>
                      <option>Without options</option>
