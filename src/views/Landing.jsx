@@ -111,19 +111,25 @@ const Landing = () => {
                   </div>
                   <div className="flex justify-between items-center gap-5">
                      <SpaceCard
-                        title="Space 1"
-                        location="Jakarta Selata, DKI Jakarta"
-                        address="Kawasan, Jl. Mega Kuningan Barat Jl. DR. Ide Anak Agung Gde Agung No.1, RT.5/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, 12950"
+                        id=""
+                        name="Space 1"
+                        city="Jakarta Selatan"
+                        province="DKI Jakarta"
+                        location="Kawasan, Jl. Mega Kuningan Barat Jl. DR. Ide Anak Agung Gde Agung No.1, RT.5/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, 12950"
                      />
                      <SpaceCard
-                        title="Space 1"
-                        location="Jakarta Selata, DKI Jakarta"
-                        address="Kawasan, Jl. Mega Kuningan Barat Jl. DR. Ide Anak Agung Gde Agung No.1, RT.5/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, 12950"
+                        id=""
+                        name="Space 2"
+                        city="Jakarta Timur"
+                        province="DKI Jakarta"
+                        location="Komplek Multatuli Indah, Jl. Multatuli No.30-31, Hamdan, Kec. Medan Maimun, Kota Medan, Sumatera Utara 20212"
                      />
                      <SpaceCard
-                        title="Space 1"
-                        location="Jakarta Selata, DKI Jakarta"
-                        address="Kawasan, Jl. Mega Kuningan Barat Jl. DR. Ide Anak Agung Gde Agung No.1, RT.5/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, 12950"
+                        id=""
+                        name="Space 3"
+                        city="Jakarta Barat"
+                        province="DKI Jakarta"
+                        location="Jl. Jend. Sudirman No.1, RT.1/RW.3, Karet Tengsin, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10250"
                      />
                   </div>
                </div>
