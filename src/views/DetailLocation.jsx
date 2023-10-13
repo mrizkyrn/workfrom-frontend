@@ -1,34 +1,34 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import Container from "../components/Container";
 import PriceCard from "../components/cards/PriceCard";
-import { useEffect, useState } from "react";
-import { useStateContext } from "../contexts/ContextProvider";
+// import { useEffect, useState } from "react";
+// import { useStateContext } from "../contexts/ContextProvider";
 
 const DetailLocation = () => {
-   const { userToken } = useStateContext();
-   const { id } = useParams();
-   const navigate = useNavigate();
-   const [data, setData] = useState({});
+   // const { userToken } = useStateContext();
+   // const { id } = useParams();
+   // const navigate = useNavigate();
+   // const [data, setData] = useState({});
 
-   useEffect(() => {
-      if (!userToken) {
-         navigate("/login");
-      } else {
-         fetch(`http://localhost:8000/buildings/show/${id}?api_token=${userToken}`)
-            .then((res) => res.json())
-            .then((data) => {
-               setData(data.data);
-            })
-            .catch((err) => {
-               console.log(err);
-            });
-      }
-   });
+   // useEffect(() => {
+   //    if (!userToken) {
+   //       navigate("/login");
+   //    } else {
+   //       fetch(`http://localhost:8000/buildings/show/${id}?api_token=${userToken}`)
+   //          .then((res) => res.json())
+   //          .then((data) => {
+   //             setData(data.data);
+   //          })
+   //          .catch((err) => {
+   //             console.log(err);
+   //          });
+   //    }
+   // }, []);
 
-   if (data) {
-      console.log(data);
-   }
+   // if (data) {
+   //    console.log(data);
+   // }
 
    return (
       <>

@@ -25,9 +25,8 @@ const OwnerDashboard = () => {
          .catch((err) => {
             console.log(err);
          });
-   }, []);
+   }, [userToken, buildings]);
 
-   console.log(buildings);
 
    return (
       <>

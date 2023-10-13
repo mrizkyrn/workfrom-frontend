@@ -7,7 +7,7 @@ const UseCaseCard = ({id, category, name, accommodate, price, location}) => {
    const navigate = useNavigate();
 
    const handleClick = () => {
-      navigate(`/use-case/${id}`);
+      navigate(`${id}`);
       window.scrollTo(0, 0);
    };
 

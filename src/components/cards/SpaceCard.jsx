@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
 import Button from "../Button";
 import { Link } from "react-router-dom";
 
+// eslint-disable-next-line react/prop-types
 const SpaceCard = ({ id, name, city, province, location }) => {
    return (
       <div className="h-[550px] max-w-[350px] flex flex-col justify-between items-center border-2 rounded-md pb-8 bg-white hover:shadow-lg transition duration-300 ease-in-out">
@@ -21,19 +21,12 @@ const SpaceCard = ({ id, name, city, province, location }) => {
                <p className="paragraph">{location}</p>
             </div>
          </div>
-         <Link to={`/location/${id}`}>
+         <Link to={`${id}`}>
             <Button text="Lihat" type={2} classname="!px-10" />
          </Link>
       </div>
    );
 };
 
-SpaceCard.propTypes = {
-   id: PropTypes.string,
-   name: PropTypes.string.isRequired,
-   city: PropTypes.string,
-   province: PropTypes.string,
-   location: PropTypes.string,
-};
 
 export default SpaceCard;

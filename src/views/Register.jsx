@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import showToastify from "../helpers/showToastify";
 
@@ -40,16 +40,7 @@ export default function Register() {
                   navigate("/login");
                }, 5000);
             } else {
-               toast.error("Register Gagal", {
-                  position: "top-right",
-                  autoClose: 5000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: true,
-                  draggable: true,
-                  progress: undefined,
-                  theme: "colored",
-               });
+               showToastify("error", data.message);
             }
          })
          .catch((err) => {

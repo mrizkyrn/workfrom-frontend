@@ -5,7 +5,7 @@ import Register from "./views/Register.jsx";
 import Landing from "./views/Landing.jsx";
 import AdminDashboard from "./views/AdminDashboard.jsx";
 import NotFound from "./views/NotFound.jsx";
-import Login from "./views/login.jsx";
+import Login from "./views/Login.jsx";
 import AuthLayout from "./components/layouts/AuthLayout.jsx";
 import OwnerLayout from "./components/layouts/OwnerLayout.jsx";
 import Location, { loader as locationLoader } from "./views/Location.jsx";
@@ -22,6 +22,7 @@ import UseCaseFacility from "./views/usecase/UseCaseFacility.jsx";
 import UseCaseReview from "./views/usecase/UseCaseReview.jsx";
 import OwnerDashboard from "./views/OwnerDashboard.jsx";
 import AddProperty from "./views/AddProperty.jsx";
+import EditProperty from "./views/EditProperty.jsx";
 
 const router = createBrowserRouter([
    {
@@ -128,6 +129,10 @@ const router = createBrowserRouter([
             path: "add-property",
             element: <AddProperty />,
          },
+         {
+            path: "edit-property/:id",
+            element: <EditProperty />,
+         }
       ],
    },
    {

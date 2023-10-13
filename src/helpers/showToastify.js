@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
 
 export default function showToastify(type, message) {
+   console.log(type, message);
    switch (type) {
       case "success":
          toast.success(message, {

@@ -43,8 +43,9 @@ const Location = () => {
                      onChange={(e) => setLocation(e.target.value)}
                      className="w-40 border-y-2 border-l-2 border-gray-300 rounded-s-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                      placeholder="Regular input"
+                     defaultValue=""
                   >
-                     <option value="" disabled selected>
+                     <option value="" disabled>
                         Location
                      </option>
                      <option value="Jakarta">Jakarta</option>
