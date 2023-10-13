@@ -1,21 +1,54 @@
 import { useState } from "react";
 import Container from "../components/Container";
 import { ArrowBotIcon } from "../icons/icons";
+import { useStateContext } from "../contexts/ContextProvider";
 
 const AddProperty = () => {
+   const { userToken } = useStateContext();
+
+   const [name, setName] = useState("");
+   const [facility, setFacility] = useState("");
+   const [location, setLocation] = useState("");
    const [city, setCity] = useState("");
    const [province, setProvince] = useState("");
-   const [useCase, setUseCase] = useState("");
-   const [properti, setProperti] = useState("");
-   const [location, setLocation] = useState("");
-   const [price, setPrice] = useState("");
    const [capacity, setCapacity] = useState("");
    const [description, setDescription] = useState("");
-   const [facility, setFacility] = useState("");
+   const [price, setPrice] = useState("");
+   const [useCase, setUseCase] = useState("");
+   const size = ""
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      console.log(city, province, useCase, properti, location, price, capacity, description, facility);
+      fetch(`http://localhost:8000/buildings/addbuild?api_token=${userToken}`, {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+         },
+         body: JSON.stringify({
+            name: name,
+            facility: facility,
+            location: location,
+            city: city,
+            provinc: province,
+            size: size,
+            accommodate: capacity,
+            description: description,
+            price: price,
+            category: useCase,
+         }),
+      })
+         .then((res) => res.json())
+         .then((data) => {
+            console.log(data);
+            if (data.success) {
+               console.log(data.data);
+            } else {
+               console.log(data.message);
+            }
+         })
+         .catch((err) => {
+            console.log(err);
+         });
    };
 
    return (
@@ -51,10 +84,15 @@ const AddProperty = () => {
                            defaultValue=""
                         >
                            <option value="" disabled>
-                              Pilih Provinsi
+                              Pilih Kota
                            </option>
-                           <option value="jakarta">Jakarta</option>
-                           <option value="medan">Medan</option>
+                           <option value="Jakarta Selatan">Jakarta Selatan</option>
+                           <option value="Jakarta Utara">Jakarta Utara</option>
+                           <option value="Jakarta Barat">Jakarta Barat</option>
+                           <option value="Jakarta Timur">Jakarta Timur</option>
+                           <option value="Bandung">Bandung</option>
+                           <option value="Surabaya">Surabaya</option>
+                           <option value="Medan">Medan</option>
                         </select>
                      </div>
 
@@ -74,8 +112,10 @@ const AddProperty = () => {
                            <option value="" disabled>
                               Pilih Provinsi
                            </option>
-                           <option value="dki jakarta">DKI Jakarta</option>
-                           <option value="sumatera utara">Sumatera Utara</option>
+                           <option value="DKI Jakarta">DKI Jakarta</option>
+                           <option value="Sumatera Utara">Sumatera Utara</option>
+                           <option value="Jawa Barat">Jawa Barat</option>
+                           <option value="Jawa Timur">Jawa Timur</option>
                         </select>
                      </div>
 
@@ -146,7 +186,7 @@ const AddProperty = () => {
                            NAMA PROPERTI
                         </label>
                         <input
-                           onChange={(e) => setProperti(e.target.value)}
+                           onChange={(e) => setName(e.target.value)}
                            type="text"
                            name="properti"
                            id="properti"

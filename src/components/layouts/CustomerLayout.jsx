@@ -6,10 +6,10 @@ import { useStateContext } from "../../contexts/ContextProvider";
 const CustomerLayout = () => {
    const { currentUser } = useStateContext();
 
-   if (currentUser.role === "owner") {
+   if (currentUser && currentUser.role === "owner") {
       return <Navigate to="/owner" />;
    }
-   
+
    return (
       <div>
          <Navbar />

@@ -15,7 +15,9 @@ const SpaceCard = ({ id, name, city, province, location }) => {
             </div>
             <div className="flex flex-col justify-center items-center gap-3 px-5 text-center">
                <h1 className="special-heading">{name}</h1>
-               <p className="paragraph !text-primary">{city}, {province}</p>
+               <p className="paragraph !text-primary">
+                  {city}, {province}
+               </p>
                <p className="paragraph">{location}</p>
             </div>
          </div>
@@ -27,7 +29,7 @@ const SpaceCard = ({ id, name, city, province, location }) => {
 };
 
 SpaceCard.propTypes = {
-   id: PropTypes.number,
+   id: PropTypes.string,
    name: PropTypes.string.isRequired,
    city: PropTypes.string,
    province: PropTypes.string,
