@@ -263,7 +263,7 @@ const AddProperty = () => {
                <input
                   type="submit"
                   value="Tambah Properti"
-                  className="bg-primary text-white rounded-full py-5 px-10 mt-10 cursor-pointer hover:bg-opacity-80 transition-all duration-300 ease-in-out"
+                  className="bg-primary text-white rounded-full py-5 px-10 mt-10 cursor-pointer hover:bg-white hover:text-primary hover:border-primary border-2 border-primary transition duration-300 ease-in-out"
                />
             </form>
          </Container>

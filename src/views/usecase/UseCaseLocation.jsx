@@ -1,16 +1,19 @@
+import { useOutletContext } from "react-router-dom";
 import { LocationIcon } from "../../icons/icons";
 
 const UseCaseLocation = () => {
+   const data = useOutletContext();
+
    return (
       <div className="flex justify-between items-center gap-16">
          <div>
-          <div className="flex gap-3 mb-3">
-            <LocationIcon className="text-primary"/>
-            <p className="paragraph !text-primary">Medan, Sumatra Utara</p>
-          </div>
-            <p className="paragraph">
-               Komplek Multatuli Indah, Jl. Multatuli No.30-31, Hamdan, Kec. Medan Maimun, 20212
-            </p>
+            <div className="flex gap-3 mb-3">
+               <LocationIcon className="text-primary" />
+               <p className="paragraph !text-primary">
+                  {data.city}, {data.provinc}
+               </p>
+            </div>
+            <p className="paragraph">{data.location}</p>
          </div>
          <div>
             <iframe

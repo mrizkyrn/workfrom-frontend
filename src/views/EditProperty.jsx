@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import Container from "../components/Container";
 import { ArrowBotIcon } from "../icons/icons";
@@ -270,7 +271,7 @@ const EditProperty = () => {
                <input
                   type="submit"
                   value="Edit Properti"
-                  className="bg-primary text-white rounded-full py-5 px-10 mt-10"
+                  className="bg-primary text-white rounded-full py-5 px-10 mt-10 cursor-pointer hover:bg-white hover:text-primary hover:border-primary border-2 border-primary transition duration-300 ease-in-out"
                />
             </form>
          </Container>

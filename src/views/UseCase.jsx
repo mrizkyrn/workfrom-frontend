@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import Container from "../components/Container";
 import UseCaseCard from "../components/cards/UseCaseCard";
 import { ArrowBotIcon, SearchIcon } from "../icons/icons";
+import formatPrice from "../helpers/formatPrice";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export async function loader() {
@@ -100,7 +101,7 @@ const UseCase = () => {
                      category={building.category}
                      name={building.name}
                      accommodate={building.accommodate}
-                     price={building.price}
+                     price={formatPrice(building.price)} 
                      location={building.location}
                   />
                ))}

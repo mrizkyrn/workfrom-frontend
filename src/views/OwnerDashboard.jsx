@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Container from "../components/Container";
 import { SearchIcon } from "../icons/icons";
 import Button from "../components/Button";
@@ -29,7 +30,7 @@ const OwnerDashboard = () => {
          .catch((err) => {
             console.log(err);
          });
-   }, []);
+   }, [buildings]);
 
    return (
       <>
