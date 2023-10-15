@@ -32,7 +32,7 @@ const UseCaseCard = ({ id, category, name, accommodate, price, location }) => {
                <p>{name}</p>
             </div>
             <h2>
-               <span className="font-semibold text-2xl text-primary">IDR {price}</span>/year
+               <span className="font-semibold text-2xl text-primary">IDR {price}</span>/month
             </h2>
          </div>
          <p className="text-left w-full">{location}</p>

@@ -1,17 +1,20 @@
 import Container from "../components/Container";
 import Tag from "../components/Tag";
 import { BuildingIcon } from "../icons/icons";
-import Button from "../components/Button";
 import { useLocation } from "react-router-dom";
 import formatPrice from "../helpers/formatPrice";
 import { useEffect, useState } from "react";
+import { useStateContext } from "../contexts/ContextProvider";
+import showToastify from "../helpers/showToastify";
+import { ToastContainer } from "react-toastify";
 
 const Booking = () => {
+   const { userToken } = useStateContext();
    const location = useLocation();
-   const data = location.state;
+   const building = location.state;
 
-   const [date1, setDate1] = useState("");
-   const [date2, setDate2] = useState("");
+   const [date1, setDate1] = useState(null);
+   const [date2, setDate2] = useState(null);
    const [totalPrice, setTotalPrice] = useState(0);
 
    useEffect(() => {
@@ -22,10 +25,41 @@ const Booking = () => {
          const date2Obj = new Date(date2Arr[0], date2Arr[1], date2Arr[2]);
          const diffTime = Math.abs(date2Obj - date1Obj);
          const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-         console.log(diffDays);
-         setTotalPrice(Math.ceil((data.price * diffDays) / 365));
+         setTotalPrice(Math.ceil((building.price * diffDays) / 30));
       }
-   }, [data.price, date1, date2]);
+   }, [building.price, date1, date2]);
+
+   const handleBooking = () => {
+      console.log(date1, date2, totalPrice);
+      if (date1 && date2) {
+         fetch(`http://localhost:8000/orders/addorders/${building.user_id}?api_token=${userToken}`, {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+         },
+         body: JSON.stringify({
+            start: date1,
+            finish: date2,
+            price: totalPrice,
+         }),
+      })
+         .then((res) => res.json())
+         .then((data) => {
+            if (data.message === "success") {
+               console.log(data.data);
+               showToastify("success", "Properti berhasil dipesan");
+            } else {
+               showToastify("error", "Properti gagal dipesan");
+            }
+         })
+         .catch((err) => {
+            console.log(err);
+         });
+      } else {
+         showToastify("error", "Tanggal tidak boleh kosong");
+      }
+      
+   };
 
    return (
       <>
@@ -44,9 +78,9 @@ const Booking = () => {
                </div>
                <div className="basis-full flex flex-col justify-center items-start gap-8">
                   <div className="flex justify-between items-center w-full">
-                     <h1 className="heading-1">{data.name}</h1>
+                     <h1 className="heading-1">{building.name}</h1>
                      <p className="paragraph">
-                        {data.city}, {data.provinc}
+                        {building.city}, {building.provinc}
                      </p>
                   </div>
                   <div className="flex gap-3 justify-start items-center w-full">
@@ -56,13 +90,13 @@ const Booking = () => {
                   <div className="flex justify-between items-center w-full">
                      <div className="flex gap-3">
                         <BuildingIcon />
-                        <p>{data.name}</p>
+                        <p>{building.name}</p>
                      </div>{" "}
-                     <p>{data.accommodate} persons</p>
+                     <p>{building.accommodate} persons</p>
                   </div>
 
                   <h2>
-                     <span className="font-bold text-2xl text-primary">IDR {formatPrice(data.price)}</span>/year
+                     <span className="font-bold text-2xl text-primary">IDR {formatPrice(building.price)}</span>/month
                   </h2>
                </div>
             </div>
@@ -85,7 +119,6 @@ const Booking = () => {
                         type="date"
                         className="w-full border-2 border-gray-300 rounded-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                         placeholder="Regular input"
-                        defaultValue=""
                      />
 
                      <label className="paragraph !font-bold">Tanggal Berakhir</label>
@@ -94,12 +127,16 @@ const Booking = () => {
                         type="date"
                         className="w-full border-2 border-gray-300 rounded-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                         placeholder="Regular input"
-                        defaultValue=""
                      />
 
                      <p className="paragraph !font-bold">Total Harga</p>
                      <h2 className="heading-1 text-primary">IDR {formatPrice(totalPrice)}</h2>
-                     <Button text="Book Now" type={1} />
+                     <button
+                        className="rounded-full border-2 py-3 px-10 font-semibold bg-primary text-white hover:bg-[#bf3a37] cursor-pointer transition duration-500 ease-in-out"
+                        onClick={handleBooking}
+                     >
+                        Book Now
+                     </button>
                   </div>
                </div>
                <div className="w-full h-full">
@@ -107,6 +144,8 @@ const Booking = () => {
                </div>
             </div>
          </Container>
+
+         <ToastContainer />
       </>
    );
 };

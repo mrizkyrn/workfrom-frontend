@@ -23,6 +23,7 @@ import UseCaseReview from "./views/usecase/UseCaseReview.jsx";
 import OwnerDashboard from "./views/OwnerDashboard.jsx";
 import AddProperty from "./views/AddProperty.jsx";
 import EditProperty from "./views/EditProperty.jsx";
+import MyOrder from "./views/MyOrder.jsx";
 
 const router = createBrowserRouter([
    {
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
             element: <Contact />,
          },
          {
+            path: "my-order",
+            element: <MyOrder />
+         },
+         {
             path: "location/:id",
             element: <DetailLocation />,
          },
@@ -96,11 +101,11 @@ const router = createBrowserRouter([
             element: <AuthRequired />,
             children: [
                {
-                  path: "use-case/:1/booking",
+                  path: "use-case/:id/booking",
                   element: <Booking />,
                },
                {
-                  path: "location/:1/booking",
+                  path: "location/:id/booking",
                   element: <Booking />,
                },
             ],

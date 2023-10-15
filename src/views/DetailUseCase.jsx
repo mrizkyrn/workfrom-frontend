@@ -68,7 +68,7 @@ const DetailUseCase = () => {
                   </div>
 
                   <h2>
-                     <span className="font-bold text-2xl text-primary">IDR {formatPrice(data.price)}</span>/year
+                     <span className="font-bold text-2xl text-primary">IDR {formatPrice(data.price)}</span>/month
                   </h2>
 
                   <button onClick={handleClick} className="w-full rounded-full border-2 border-primary py-3 px-6 font-semibold bg-primary text-white hover:bg-white hover:text-primary cursor-pointer transition duration-500 ease-in-out">
