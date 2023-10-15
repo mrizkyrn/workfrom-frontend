@@ -1,9 +1,9 @@
-import Button from "../components/Button";
-import Container from "../components/Container";
-import SlideShow from "../components/SlideShow";
-import SpaceCard from "../components/cards/SpaceCard";
-import CaseCard from "../components/cards/CaseCard";
-import FaqCard from "../components/cards/FaqCard";
+import Button from "../../components/Button";
+import Container from "../../components/Container";
+import SlideShow from "../../components/SlideShow";
+import SpaceCard from "../../components/cards/SpaceCard";
+import CaseCard from "../../components/cards/CaseCard";
+import FaqCard from "../../components/cards/FaqCard";
 
 const Landing = () => {
    return (

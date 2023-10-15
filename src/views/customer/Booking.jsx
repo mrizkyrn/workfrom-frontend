@@ -1,11 +1,11 @@
-import Container from "../components/Container";
-import Tag from "../components/Tag";
-import { BuildingIcon } from "../icons/icons";
+import Container from "../../components/Container";
+import Tag from "../../components/Tag";
+import { BuildingIcon } from "../../icons/icons";
 import { useLocation } from "react-router-dom";
-import formatPrice from "../helpers/formatPrice";
+import formatPrice from "../../helpers/formatPrice";
 import { useEffect, useState } from "react";
-import { useStateContext } from "../contexts/ContextProvider";
-import showToastify from "../helpers/showToastify";
+import { useStateContext } from "../../contexts/ContextProvider";
+import showToastify from "../../helpers/showToastify";
 import { ToastContainer } from "react-toastify";
 
 const Booking = () => {
@@ -32,32 +32,31 @@ const Booking = () => {
    const handleBooking = () => {
       if (date1 && date2) {
          fetch(`http://localhost:8000/orders/addorders/${building.user_id}?api_token=${userToken}`, {
-         method: "POST",
-         headers: {
-            "Content-Type": "application/json",
-         },
-         body: JSON.stringify({
-            start: date1,
-            finish: date2,
-            price: totalPrice,
-         }),
-      })
-         .then((res) => res.json())
-         .then((data) => {
-            if (data.message === "success") {
-               console.log(data.data);
-               showToastify("success", "Properti berhasil dipesan");
-            } else {
-               showToastify("error", "Properti gagal dipesan");
-            }
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+               start: date1,
+               finish: date2,
+               price: totalPrice,
+            }),
          })
-         .catch((err) => {
-            console.log(err);
-         });
+            .then((res) => res.json())
+            .then((data) => {
+               if (data.message === "success") {
+                  console.log(data.data);
+                  showToastify("success", "Properti berhasil dipesan");
+               } else {
+                  showToastify("error", "Properti gagal dipesan");
+               }
+            })
+            .catch((err) => {
+               console.log(err);
+            });
       } else {
          showToastify("error", "Tanggal tidak boleh kosong");
       }
-      
    };
 
    return (

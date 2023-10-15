@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Container from "../components/Container";
-import SpaceCard from "../components/cards/SpaceCard";
+import Container from "../../components/Container";
+import SpaceCard from "../../components/cards/SpaceCard";
 import { useLoaderData } from "react-router-dom";
-import { ArrowBotIcon, SearchIcon } from "../icons/icons";
+import { ArrowBotIcon, SearchIcon } from "../../icons/icons";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export async function loader() {

@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { useStateContext } from "../contexts/ContextProvider";
-import Container from "../components/Container";
-import OrderCard from "../components/cards/OrderCard";
-import { SearchIcon } from "../icons/icons";
+import { useStateContext } from "../../contexts/ContextProvider";
+import Container from "../../components/Container";
+import OrderCard from "../../components/cards/OrderCard";
+import { SearchIcon } from "../../icons/icons";
 
 const MyOrder = () => {
    const { userToken } = useStateContext();
@@ -20,6 +21,7 @@ const MyOrder = () => {
             console.log(err);
          });
    }, []);
+
    console.log(orders);
 
    return (
@@ -42,7 +44,7 @@ const MyOrder = () => {
             </div>
 
             <div className="flex flex-col w-full gap-5 mt-12">
-               {orders ? (
+               {orders.length > 0 ? (
                   orders.map((order, i) => (
                      <OrderCard
                         key={i}
@@ -54,7 +56,12 @@ const MyOrder = () => {
                      />
                   ))
                ) : (
-                  <h1 className="heading-1">Tidak ada pesanan</h1>
+                  <div className="flex flex-col justify-center items-center">
+                     <img src="/vector-1.svg" alt="Vector" className="w-1/3 mt-10" />
+                     <p className="paragraph text-center">
+                        Belum ada properti yang anda pesan. <br /> Silahkan pesan properti.
+                     </p>
+                  </div>
                )}
             </div>
          </Container>

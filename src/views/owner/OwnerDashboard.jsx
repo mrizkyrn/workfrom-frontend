@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Container from "../components/Container";
-import { SearchIcon } from "../icons/icons";
-import Button from "../components/Button";
+import Container from "../../components/Container";
+import { SearchIcon } from "../../icons/icons";
+import Button from "../../components/Button";
 import { Link } from "react-router-dom";
-import PropertyCard from "../components/cards/PropertyCard";
-import { useStateContext } from "../contexts/ContextProvider";
+import PropertyCard from "../../components/cards/PropertyCard";
+import { useStateContext } from "../../contexts/ContextProvider";
 import { useEffect, useState } from "react";
 
 const OwnerDashboard = () => {

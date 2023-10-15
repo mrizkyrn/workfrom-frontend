@@ -1,29 +1,29 @@
 import { createBrowserRouter } from "react-router-dom";
-import CustomerLayout from "./components/layouts/CustomerLayout.jsx";
-import AdminLayout from "./components/layouts/AdminLayout.jsx";
-import Register from "./views/Register.jsx";
-import Landing from "./views/Landing.jsx";
-import AdminDashboard from "./views/AdminDashboard.jsx";
-import NotFound from "./views/NotFound.jsx";
-import Login from "./views/Login.jsx";
 import AuthLayout from "./components/layouts/AuthLayout.jsx";
 import OwnerLayout from "./components/layouts/OwnerLayout.jsx";
-import Location, { loader as locationLoader } from "./views/Location.jsx";
-import UseCase, { loader as useCaseLoader } from "./views/UseCase.jsx";
-import Blog from "./views/Blog.jsx";
-import Contact from "./views/Contact.jsx";
-import DetailLocation from "./views/DetailLocation.jsx";
-import DetailUseCase from "./views/DetailUseCase.jsx";
+import CustomerLayout from "./components/layouts/CustomerLayout.jsx";
+import AdminLayout from "./components/layouts/AdminLayout.jsx";
 import AuthRequired from "./components/layouts/AuthRequired.jsx";
-import Booking from "./views/Booking.jsx";
+import Login from "./views/Login.jsx";
+import Register from "./views/Register.jsx";
+import Contact from "./views/Contact.jsx";
+import NotFound from "./views/NotFound.jsx";
+import AdminDashboard from "./views/AdminDashboard.jsx";
+import Landing from "./views/customer/Landing.jsx";
+import Location, { loader as locationLoader } from "./views/customer/Location.jsx";
+import UseCase, { loader as useCaseLoader } from "./views/customer/UseCase.jsx";
+import Booking from "./views/customer/Booking.jsx";
+import Blog from "./views/customer/Blog.jsx";
+import MyOrder from "./views/customer/MyOrder.jsx";
+import DetailLocation from "./views/customer/DetailLocation.jsx";
+import DetailUseCase from "./views/customer/DetailUseCase.jsx";
 import UseCaseImages from "./views/usecase/UseCaseImages.jsx";
 import UseCaseLocation from "./views/usecase/UseCaseLocation.jsx";
 import UseCaseFacility from "./views/usecase/UseCaseFacility.jsx";
 import UseCaseReview from "./views/usecase/UseCaseReview.jsx";
-import OwnerDashboard from "./views/OwnerDashboard.jsx";
-import AddProperty from "./views/AddProperty.jsx";
-import EditProperty from "./views/EditProperty.jsx";
-import MyOrder from "./views/MyOrder.jsx";
+import OwnerDashboard from "./views/owner/OwnerDashboard.jsx";
+import AddProperty from "./views/owner/AddProperty.jsx";
+import EditProperty from "./views/owner/EditProperty.jsx";
 
 const router = createBrowserRouter([
    {
@@ -67,39 +67,13 @@ const router = createBrowserRouter([
             element: <Contact />,
          },
          {
-            path: "my-order",
-            element: <MyOrder />
-         },
-         {
-            path: "location/:id",
-            element: <DetailLocation />,
-         },
-         {
-            path: "use-case/:id",
-            element: <DetailUseCase />,
-            children: [
-               {
-                  index: true,
-                  element: <UseCaseImages />,
-               },
-               {
-                  path: "facility",
-                  element: <UseCaseFacility />,
-               },
-               {
-                  path: "review",
-                  element: <UseCaseReview />,
-               },
-               {
-                  path: "location",
-                  element: <UseCaseLocation />,
-               },
-            ],
-         },
-         {
             path: "/",
             element: <AuthRequired />,
             children: [
+               {
+                  path: "my-order",
+                  element: <MyOrder />,
+               },
                {
                   path: "use-case/:id/booking",
                   element: <Booking />,
@@ -107,6 +81,32 @@ const router = createBrowserRouter([
                {
                   path: "location/:id/booking",
                   element: <Booking />,
+               },
+               {
+                  path: "location/:id",
+                  element: <DetailLocation />,
+               },
+               {
+                  path: "use-case/:id",
+                  element: <DetailUseCase />,
+                  children: [
+                     {
+                        index: true,
+                        element: <UseCaseImages />,
+                     },
+                     {
+                        path: "facility",
+                        element: <UseCaseFacility />,
+                     },
+                     {
+                        path: "review",
+                        element: <UseCaseReview />,
+                     },
+                     {
+                        path: "location",
+                        element: <UseCaseLocation />,
+                     },
+                  ],
                },
             ],
          },
@@ -137,7 +137,7 @@ const router = createBrowserRouter([
          {
             path: "edit-property/:id",
             element: <EditProperty />,
-         }
+         },
       ],
    },
    {

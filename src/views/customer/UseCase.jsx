@@ -1,8 +1,8 @@
 import { useLoaderData } from "react-router-dom";
-import Container from "../components/Container";
-import UseCaseCard from "../components/cards/UseCaseCard";
-import { ArrowBotIcon, SearchIcon } from "../icons/icons";
-import formatPrice from "../helpers/formatPrice";
+import Container from "../../components/Container";
+import UseCaseCard from "../../components/cards/UseCaseCard";
+import { ArrowBotIcon, SearchIcon } from "../../icons/icons";
+import formatPrice from "../../helpers/formatPrice";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export async function loader() {
@@ -54,7 +54,10 @@ const UseCase = () => {
                      className="w-full border-y-2 border-r-0 border-l border-gray-300 text-gray-600 h-16 pl-5 pr-10 bg-white focus:outline-none appearance-none"
                      placeholder="Regular input"
                   />
-                  <button className="border-y-2 border-r-2 border-l-0 border-gray-300 rounded-e-full h-16 px-5" aria-label="search">
+                  <button
+                     className="border-y-2 border-r-2 border-l-0 border-gray-300 rounded-e-full h-16 px-5"
+                     aria-label="search"
+                  >
                      <SearchIcon />
                   </button>
                </div>
@@ -63,7 +66,7 @@ const UseCase = () => {
                   <ArrowBotIcon />
 
                   <select
-                     className="border-2 border-gray-300 rounded-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+                     className="w-52 border-2 border-gray-300 rounded-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                      placeholder="Regular input"
                      defaultValue=""
                      aria-label="Capacity"
@@ -71,8 +74,12 @@ const UseCase = () => {
                      <option value="" disabled>
                         Capacity
                      </option>
-                     <option>Without options</option>
-                     <option>Without options</option>
+                     <option>1-10</option>
+                     <option>10-20</option>
+                     <option>20-30</option>
+                     <option>30-40</option>
+                     <option>40-50</option>
+                     <option>&gt;50</option>
                   </select>
                </div>
 
@@ -80,7 +87,7 @@ const UseCase = () => {
                   <ArrowBotIcon />
 
                   <select
-                     className="border-2 border-gray-300 rounded-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+                     className="w-52 border-2 border-gray-300 rounded-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                      placeholder="Regular input"
                      defaultValue=""
                      aria-label="Price"
@@ -88,8 +95,12 @@ const UseCase = () => {
                      <option value="" disabled>
                         Price
                      </option>
-                     <option>Without options</option>
-                     <option>Without options</option>
+                     <option>&lt; Rp. 1.000.000</option>
+                     <option>Rp. 1.000.000 - Rp. 2.000.000</option>
+                     <option>Rp. 2.000.000 - Rp. 3.000.000</option>
+                     <option>Rp. 3.000.000 - Rp. 4.000.000</option>
+                     <option>Rp. 4.000.000 - Rp. 5.000.000</option>
+                     <option>&gt; Rp. 5.000.000</option>
                   </select>
                </div>
             </div>
@@ -104,7 +115,7 @@ const UseCase = () => {
                      category={building.category}
                      name={building.name}
                      accommodate={building.accommodate}
-                     price={formatPrice(building.price)} 
+                     price={formatPrice(building.price)}
                      location={building.location}
                   />
                ))}

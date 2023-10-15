@@ -1,26 +1,12 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
-import Container from "../components/Container";
-import { ArrowBotIcon } from "../icons/icons";
-import { useStateContext } from "../contexts/ContextProvider";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import Container from "../../components/Container";
+import { ArrowBotIcon } from "../../icons/icons";
+import { useStateContext } from "../../contexts/ContextProvider";
+import showToastify from "../../helpers/showToastify";
+import { ToastContainer } from "react-toastify";
 
-const EditProperty = () => {
+const AddProperty = () => {
    const { userToken } = useStateContext();
-   const { id } = useParams();
-   const [data, setData] = useState({});
-
-   useEffect(() => {
-      fetch(`http://localhost:8000/buildings/showbuild/${id}?api_token=${userToken}`)
-         .then((res) => res.json())
-         .then((data) => {
-            console.log(data);
-            setData(data);
-         })
-         .catch((err) => {
-            console.log(err);
-         });
-   }, []);
 
    const [name, setName] = useState("");
    const [facility, setFacility] = useState("");
@@ -31,33 +17,42 @@ const EditProperty = () => {
    const [description, setDescription] = useState("");
    const [price, setPrice] = useState("");
    const [useCase, setUseCase] = useState("");
-   const size = "";
+   const size = "100 x 100";
+
+   const resetForm = () => {
+      document.getElementById("add-property-form").reset();
+   };
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      const payload = {
-         name: name,
-         facility: facility,
-         location: location,
-         city: city,
-         province: province,
-         accommodate: capacity,
-         description: description,
-         price: price,
-         category: useCase,
-         size: size,
-      };
-
-      fetch(`http://localhost:8000//buildings/updatebuild/${id}?api_token=${userToken}`, {
-         method: "PUT",
+      fetch(`http://localhost:8000/buildings/addbuild?api_token=${userToken}`, {
+         method: "POST",
          headers: {
             "Content-Type": "application/json",
          },
-         body: JSON.stringify(payload),
+         body: JSON.stringify({
+            name: name,
+            facility: facility,
+            location: location,
+            city: city,
+            provinc: province,
+            size: size,
+            accommodate: capacity,
+            description: description,
+            price: price,
+            category: useCase,
+         }),
       })
          .then((res) => res.json())
          .then((data) => {
             console.log(data);
+            if (data.message === "success") {
+               console.log("success");
+               showToastify("success", "Properti berhasi ditambahkan");
+               resetForm();
+            } else {
+               showToastify("error", "Properti gagal ditambahkan");
+            }
          })
          .catch((err) => {
             console.log(err);
@@ -66,11 +61,13 @@ const EditProperty = () => {
 
    return (
       <>
+         <ToastContainer />
+
          <Container>
             <div className="flex justify-between items-center mt-10">
-               <h1 className="heading-1">Edit Properti</h1>
+               <h1 className="heading-1">Tambah Properti</h1>
                <p>
-                  Home &gt; <span className="text-primary">Edit Properti</span>
+                  Home &gt; <span className="text-primary">Tambah Properti</span>
                </p>
             </div>
          </Container>
@@ -78,6 +75,7 @@ const EditProperty = () => {
          <Container>
             <form
                className="flex flex-col justify-between items-end gap-10 mt-12"
+               id="add-property-form"
                method="POST"
                onSubmit={handleSubmit}
             >
@@ -91,10 +89,10 @@ const EditProperty = () => {
 
                         <select
                            onChange={(e) => setCity(e.target.value)}
-                           defaultValue={data.city}
                            id="city"
                            name="city"
                            className="w-full border-2 border-gray-300 rounded-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+                           defaultValue=""
                         >
                            <option value="" disabled>
                               Pilih Kota
@@ -117,10 +115,10 @@ const EditProperty = () => {
 
                         <select
                            onChange={(e) => setProvince(e.target.value)}
-                           defaultValue={data.province}
                            id="province"
                            name="province"
                            className="w-full border-2 border-gray-300 rounded-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+                           defaultValue=""
                         >
                            <option value="" disabled>
                               Pilih Provinsi
@@ -142,7 +140,7 @@ const EditProperty = () => {
                               value="Event"
                               className="mr-3"
                               onChange={(e) => setUseCase(e.target.value)}
-                              checked={data.category === "Event"}
+                              checked={useCase === "Event"}
                            />
                            <label htmlFor="event" className="text-xl text-dark1">
                               Event
@@ -156,7 +154,7 @@ const EditProperty = () => {
                               value="Meeting"
                               className="mr-3"
                               onChange={(e) => setUseCase(e.target.value)}
-                              checked={data.category === "Meeting"}
+                              checked={useCase === "Meeting"}
                            />
                            <label htmlFor="meeting" className="text-xl text-dark1">
                               Meeting
@@ -166,11 +164,11 @@ const EditProperty = () => {
                            <input
                               type="radio"
                               name="usecase"
-                              id="Photo shoot"
-                              value="photoshoot"
+                              id="photoshoot"
+                              value="Photo Shoot"
                               className="mr-3"
                               onChange={(e) => setUseCase(e.target.value)}
-                              checked={data.category === "Photo Shoot"}
+                              checked={useCase === "Photo Shoot"}
                            />
                            <label htmlFor="photoshoot" className="text-xl text-dark1">
                               Photo Shoot
@@ -184,7 +182,7 @@ const EditProperty = () => {
                               value="Video Shoot"
                               className="mr-3"
                               onChange={(e) => setUseCase(e.target.value)}
-                              checked={data.category === "Video Shoot"}
+                              checked={useCase === "Video Shoot"}
                            />
                            <label htmlFor="videoshoot" className="text-xl text-dark1">
                               Video Shoot
@@ -195,15 +193,14 @@ const EditProperty = () => {
 
                   <div className="w-full flex justify-between items-start gap-8">
                      <div className="flex flex-col justify-start items-start w-full gap-5">
-                        <label htmlFor="name" className="text-lg font-bold tracking-wider text-primary">
+                        <label htmlFor="properti" className="text-lg font-bold tracking-wider text-primary">
                            NAMA PROPERTI
                         </label>
                         <input
                            onChange={(e) => setName(e.target.value)}
-                           defaultValue={data.name}
                            type="text"
-                           name="name"
-                           id="name"
+                           name="properti"
+                           id="properti"
                            className="w-full border-2 border-gray-300 rounded-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                         />
 
@@ -212,7 +209,6 @@ const EditProperty = () => {
                         </label>
                         <textarea
                            onChange={(e) => setLocation(e.target.value)}
-                           defaultValue={data.location}
                            name="location"
                            id="location"
                            className="w-full border-2 border-gray-300 rounded-3xl text-gray-600 h-40 p-5 bg-white hover:border-gray-400 focus:outline-none appearance-none"
@@ -223,7 +219,6 @@ const EditProperty = () => {
                         </label>
                         <input
                            onChange={(e) => setPrice(e.target.value)}
-                           defaultValue={data.price}
                            type="text"
                            name="price"
                            id="price"
@@ -236,7 +231,6 @@ const EditProperty = () => {
                         </label>
                         <input
                            onChange={(e) => setCapacity(e.target.value)}
-                           defaultValue={data.accommodate}
                            type="text"
                            name="capacity"
                            id="capacity"
@@ -248,7 +242,6 @@ const EditProperty = () => {
                         </label>
                         <textarea
                            onChange={(e) => setDescription(e.target.value)}
-                           defaultValue={data.description}
                            name="description"
                            id="description"
                            className="w-full border-2 border-gray-300 rounded-3xl text-gray-600 h-40 p-5 bg-white hover:border-gray-400 focus:outline-none appearance-none"
@@ -259,7 +252,6 @@ const EditProperty = () => {
                         </label>
                         <input
                            onChange={(e) => setFacility(e.target.value)}
-                           defaultValue={data.facility}
                            type="text"
                            name="facility"
                            id="facility"
@@ -270,7 +262,7 @@ const EditProperty = () => {
                </div>
                <input
                   type="submit"
-                  value="Edit Properti"
+                  value="Tambah Properti"
                   className="bg-primary text-white rounded-full py-5 px-10 mt-10 cursor-pointer hover:bg-white hover:text-primary hover:border-primary border-2 border-primary transition duration-300 ease-in-out"
                />
             </form>
@@ -279,4 +271,4 @@ const EditProperty = () => {
    );
 };
 
-export default EditProperty;
+export default AddProperty;

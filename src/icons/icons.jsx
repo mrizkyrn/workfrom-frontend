@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 export function BuildingIcon({ className = "" }) {
    return (
       <svg
@@ -29,7 +30,6 @@ export function ArrowBotIcon() {
    );
 }
 
-// eslint-disable-next-line react/prop-types
 export function SearchIcon({ className = "" }) {
    return (
       <svg
@@ -119,7 +119,6 @@ export function StarIcon() {
    );
 }
 
-// eslint-disable-next-line react/prop-types
 export function LocationIcon({ className = "" }) {
    return (
       <svg

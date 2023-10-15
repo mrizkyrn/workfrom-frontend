@@ -1,34 +1,34 @@
-import { Link } from "react-router-dom";
-import Button from "../components/Button";
-import Container from "../components/Container";
-import PriceCard from "../components/cards/PriceCard";
-// import { useEffect, useState } from "react";
-// import { useStateContext } from "../contexts/ContextProvider";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useNavigate, useParams } from "react-router-dom";
+import Container from "../../components/Container";
+import PriceCard from "../../components/cards/PriceCard";
+import { useStateContext } from "../../contexts/ContextProvider";
+import { useEffect, useState } from "react";
 
 const DetailLocation = () => {
-   // const { userToken } = useStateContext();
-   // const { id } = useParams();
-   // const navigate = useNavigate();
-   // const [data, setData] = useState({});
+   const { userToken } = useStateContext();
+   const { id } = useParams();
+   const [data, setData] = useState({});
+   const navigate = useNavigate();
 
-   // useEffect(() => {
-   //    if (!userToken) {
-   //       navigate("/login");
-   //    } else {
-   //       fetch(`http://localhost:8000/buildings/show/${id}?api_token=${userToken}`)
-   //          .then((res) => res.json())
-   //          .then((data) => {
-   //             setData(data.data);
-   //          })
-   //          .catch((err) => {
-   //             console.log(err);
-   //          });
-   //    }
-   // }, []);
+   useEffect(() => {
+      if (!userToken) {
+         navigate("/login");
+      } else {
+         fetch(`http://localhost:8000/customers/showcustid/${id}/?api_token=${userToken}`)
+            .then((res) => res.json())
+            .then((data) => {
+               setData(data);
+            })
+            .catch((err) => {
+               console.log(err);
+            });
+      }
+   }, []);
 
-   // if (data) {
-   //    console.log(data);
-   // }
+   const handleClick = () => {
+      navigate(`booking`, { state: data });
+   };
 
    return (
       <>
@@ -53,9 +53,12 @@ const DetailLocation = () => {
                   place where world and history changers can break free from the traditional working setting. We seek to
                   empower local business and creative communities to fulfill their true potential.
                </p>
-               <Link to={"booking"}>
-                  <Button text="Book Now" type={1} />
-               </Link>
+               <button
+                  onClick={handleClick}
+                  className="rounded-full border-2 border-primary py-3 px-10 font-semibold bg-primary text-white hover:bg-white hover:text-primary cursor-pointer transition duration-500 ease-in-out"
+               >
+                  Book Now
+               </button>
             </div>
          </Container>
 

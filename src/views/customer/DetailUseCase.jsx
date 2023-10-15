@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
-import Container from "../components/Container";
-import Tag from "../components/Tag";
-import { BuildingIcon } from "../icons/icons";
+import Container from "../../components/Container";
+import Tag from "../../components/Tag";
+import { BuildingIcon } from "../../icons/icons";
 import { useEffect, useState } from "react";
-import { useStateContext } from "../contexts/ContextProvider";
-import formatPrice from "../helpers/formatPrice";
+import { useStateContext } from "../../contexts/ContextProvider";
+import formatPrice from "../../helpers/formatPrice";
 
 const DetailUseCase = () => {
    const { userToken } = useStateContext();
@@ -28,10 +28,9 @@ const DetailUseCase = () => {
       }
    }, []);
 
-
    const handleClick = () => {
       navigate(`booking`, { state: data });
-   }
+   };
 
    return (
       <>
@@ -71,7 +70,10 @@ const DetailUseCase = () => {
                      <span className="font-bold text-2xl text-primary">IDR {formatPrice(data.price)}</span>/month
                   </h2>
 
-                  <button onClick={handleClick} className="w-full rounded-full border-2 border-primary py-3 px-6 font-semibold bg-primary text-white hover:bg-white hover:text-primary cursor-pointer transition duration-500 ease-in-out">
+                  <button
+                     onClick={handleClick}
+                     className="w-full rounded-full border-2 border-primary py-3 px-6 font-semibold bg-primary text-white hover:bg-white hover:text-primary cursor-pointer transition duration-500 ease-in-out"
+                  >
                      Book Now
                   </button>
                </div>
