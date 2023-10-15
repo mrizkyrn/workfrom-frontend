@@ -63,6 +63,7 @@ const Location = () => {
                <button
                   onClick={handleSubmit}
                   className="border-y-2 border-r-2 border-l-0 border-gray-300 rounded-e-full h-16 px-5"
+                  aria-label="Search"
                >
                   <SearchIcon />
                </button>

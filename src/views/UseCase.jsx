@@ -37,6 +37,7 @@ const UseCase = () => {
                         className="border-y-2 border-l-2 border-gray-300 rounded-s-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                         placeholder="Regular input"
                         defaultValue=""
+                        aria-label="Use Case"
                      >
                         <option value="" disabled>
                            Use Case
@@ -53,7 +54,7 @@ const UseCase = () => {
                      className="w-full border-y-2 border-r-0 border-l border-gray-300 text-gray-600 h-16 pl-5 pr-10 bg-white focus:outline-none appearance-none"
                      placeholder="Regular input"
                   />
-                  <button className="border-y-2 border-r-2 border-l-0 border-gray-300 rounded-e-full h-16 px-5">
+                  <button className="border-y-2 border-r-2 border-l-0 border-gray-300 rounded-e-full h-16 px-5" aria-label="search">
                      <SearchIcon />
                   </button>
                </div>
@@ -65,6 +66,7 @@ const UseCase = () => {
                      className="border-2 border-gray-300 rounded-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                      placeholder="Regular input"
                      defaultValue=""
+                     aria-label="Capacity"
                   >
                      <option value="" disabled>
                         Capacity
@@ -81,6 +83,7 @@ const UseCase = () => {
                      className="border-2 border-gray-300 rounded-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                      placeholder="Regular input"
                      defaultValue=""
+                     aria-label="Price"
                   >
                      <option value="" disabled>
                         Price

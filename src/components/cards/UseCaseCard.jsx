@@ -18,7 +18,7 @@ const UseCaseCard = ({ id, category, name, accommodate, price, location }) => {
       >
          <div className="flex flex-col gap-3 w-full">
             <div className="w-full h-52 mb-3">
-               <img src="/image-10.png" className="w-full h-full object-cover rounded-md" />
+               <img src="/image-10.png" className="w-full h-full object-cover rounded-md" alt="Use Case" />
             </div>
             <div className="flex gap-3 justify-start items-center w-full">
                <Tag text={category} />

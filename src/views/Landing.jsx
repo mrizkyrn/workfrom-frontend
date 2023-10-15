@@ -59,10 +59,10 @@ const Landing = () => {
             <div className="flex flex-col justify-center items-center gap-8 mt-44">
                <h1 className="heading-1 text-dark1">Partner Kami</h1>
                <div className="flex justify-between items-center gap-24 opacity-50">
-                  <img src="https://workfrom.id/wp-content/uploads/2023/06/image-9.png" alt="Partner 1" />
-                  <img src="https://workfrom.id/wp-content/uploads/2023/06/image-10.png" alt="Partner 2" />
-                  <img src="https://workfrom.id/wp-content/uploads/2023/06/image-11.png" alt="Partner 3" />
-                  <img src="https://workfrom.id/wp-content/uploads/2023/06/image-12.png" alt="Partner 4" />
+                  <img src="/logo-1.png" alt="Partner 1" />
+                  <img src="/logo-2.png" alt="Partner 2" />
+                  <img src="/logo-3.png" alt="Partner 3" />
+                  <img src="/logo-4.png" alt="Partner 4" />
                </div>
             </div>
          </Container>

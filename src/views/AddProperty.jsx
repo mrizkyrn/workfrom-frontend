@@ -237,24 +237,24 @@ const AddProperty = () => {
                            className="w-full border-2 border-gray-300 rounded-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                         />
 
-                        <label htmlFor="location" className="text-lg font-bold tracking-wider text-primary">
+                        <label htmlFor="description" className="text-lg font-bold tracking-wider text-primary">
                            DESKRIPSI
                         </label>
                         <textarea
                            onChange={(e) => setDescription(e.target.value)}
-                           name="location"
-                           id="location"
+                           name="description"
+                           id="description"
                            className="w-full border-2 border-gray-300 rounded-3xl text-gray-600 h-40 p-5 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                         ></textarea>
 
-                        <label htmlFor="price" className="text-lg font-bold tracking-wider text-primary">
+                        <label htmlFor="facility" className="text-lg font-bold tracking-wider text-primary">
                            FASILITAS
                         </label>
                         <input
                            onChange={(e) => setFacility(e.target.value)}
                            type="text"
-                           name="price"
-                           id="price"
+                           name="facility"
+                           id="facility"
                            className="w-full border-2 border-gray-300 rounded-full text-gray-600 h-16 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                         />
                      </div>

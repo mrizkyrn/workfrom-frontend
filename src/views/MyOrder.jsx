@@ -43,9 +43,9 @@ const MyOrder = () => {
 
             <div className="flex flex-col w-full gap-5 mt-12">
                {orders ? (
-                  orders.map((order) => (
+                  orders.map((order, i) => (
                      <OrderCard
-                        key={order.user_id}
+                        key={i}
                         category={order.category}
                         name={order.name}
                         accommodate={order.accommodate}

@@ -30,7 +30,6 @@ const Booking = () => {
    }, [building.price, date1, date2]);
 
    const handleBooking = () => {
-      console.log(date1, date2, totalPrice);
       if (date1 && date2) {
          fetch(`http://localhost:8000/orders/addorders/${building.user_id}?api_token=${userToken}`, {
          method: "POST",
