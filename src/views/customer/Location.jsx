@@ -1,23 +1,29 @@
-import { useState } from "react";
-import Container from "../../components/Container";
-import SpaceCard from "../../components/cards/SpaceCard";
-import { useLoaderData } from "react-router-dom";
-import { ArrowBotIcon, SearchIcon } from "../../icons/icons";
+import { useState } from 'react';
+import Container from '../../components/Container';
+import SpaceCard from '../../components/cards/SpaceCard';
+import { useLoaderData } from 'react-router-dom';
+import { ArrowBotIcon, SearchIcon } from '../../icons/icons';
+import dummyData from '../../utils/dummyData';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export async function loader() {
-   const res = await fetch("http://localhost:8000/all");
-   if (!res.ok) {
-      throw new Error("Something went wrong");
+   try {
+      const res = await fetch('http://localhost:8000/all');
+      if (!res.ok) {
+         throw new Error('Something went wrong');
+      }
+      const buildings = await res.json();
+      return buildings;
+   } catch (error) {
+      console.log('failed to fetch data, use dummy data instead');
+      return dummyData;
    }
-   const buildings = await res.json();
-   return buildings;
 }
 
 const Location = () => {
    const buildings = useLoaderData();
-   const [location, setLocation] = useState("");
-   const [keyword, setKeyword] = useState("");
+   const [location, setLocation] = useState('');
+   const [keyword, setKeyword] = useState('');
 
    const handleSubmit = (e) => {
       e.preventDefault();

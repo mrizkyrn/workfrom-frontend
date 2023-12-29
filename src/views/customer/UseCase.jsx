@@ -1,17 +1,23 @@
-import { useLoaderData } from "react-router-dom";
-import Container from "../../components/Container";
-import UseCaseCard from "../../components/cards/UseCaseCard";
-import { ArrowBotIcon, SearchIcon } from "../../icons/icons";
-import formatPrice from "../../helpers/formatPrice";
+import { useLoaderData } from 'react-router-dom';
+import Container from '../../components/Container';
+import UseCaseCard from '../../components/cards/UseCaseCard';
+import { ArrowBotIcon, SearchIcon } from '../../icons/icons';
+import formatPrice from '../../helpers/formatPrice';
+import dummyData from '../../utils/dummyData';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export async function loader() {
-   const res = await fetch("http://localhost:8000/all");
-   if (!res.ok) {
-      throw new Error("Something went wrong");
+   try {
+      const res = await fetch('http://localhost:8000/all');
+      if (!res.ok) {
+         throw new Error('Something went wrong');
+      }
+      const buildings = await res.json();
+      return buildings;
+   } catch (error) {
+      console.log('failed to fetch data, use dummy data instead');
+      return dummyData;
    }
-   const buildings = await res.json();
-   return buildings;
 }
 
 const UseCase = () => {

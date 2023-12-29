@@ -97,6 +97,7 @@ const AddProperty = () => {
                            <option value="" disabled>
                               Pilih Kota
                            </option>
+                           <option value="Jakarta Pusat">Jakarta Pusat</option>
                            <option value="Jakarta Selatan">Jakarta Selatan</option>
                            <option value="Jakarta Utara">Jakarta Utara</option>
                            <option value="Jakarta Barat">Jakarta Barat</option>
